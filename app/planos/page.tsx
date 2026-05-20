@@ -31,7 +31,7 @@ const EXTRA_SERVICES = [
     ),
     name: 'Acompanhamento Online',
     sub: 'Remoto · Flexível',
-    desc: 'Coaching à distância com programa personalizado, check-ins semanais e ajustes em tempo real. Para quem não está em Sintra.',
+    desc: 'Coaching à distância com programa personalizado, check-ins semanais e ajustes em tempo real.',
   },
 ];
 

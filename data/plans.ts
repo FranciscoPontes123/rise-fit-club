@@ -13,8 +13,6 @@ export const PLANS = [
     perks: [
       { t: 'Treino Livre — piso principal', y: true },
       { t: 'Acesso à app Danalock', y: true },
-      { t: 'Aulas de grupo', y: false },
-      { t: 'Pilates · Jiu Jitsu', y: false },
       { t: 'Acesso 24h / 7 dias', y: false },
     ],
   },
@@ -22,7 +20,7 @@ export const PLANS = [
     id: 'inter',
     name: 'Intermédio',
     price: 55,
-    kicker: 'O mais escolhido',
+    kicker: '',
     featured: true,
     hours: [
       'Seg–Sex · 06:00 – 24:00',
@@ -32,8 +30,6 @@ export const PLANS = [
     perks: [
       { t: 'Treino Livre — piso principal', y: true },
       { t: 'Acesso à app Danalock', y: true },
-      { t: 'Aulas de grupo · ilimitadas', y: true },
-      { t: '1 modalidade extra (Pilates ou BJJ)', y: true },
       { t: 'Acesso 24h / 7 dias', y: false },
     ],
   },
@@ -51,8 +47,6 @@ export const PLANS = [
     perks: [
       { t: 'Treino Livre — piso principal', y: true },
       { t: 'Acesso à app Danalock', y: true },
-      { t: 'Aulas de grupo · ilimitadas', y: true },
-      { t: 'Todas as modalidades (Pilates + BJJ)', y: true },
       { t: 'Acesso 24h / 7 dias', y: true },
     ],
   },
