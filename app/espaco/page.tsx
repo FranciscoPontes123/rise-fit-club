@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Photo from '@/components/ui/Photo';
 import SectionHead from '@/components/ui/SectionHead';
 import LocationStrip from '@/components/sections/LocationStrip';
@@ -10,8 +11,8 @@ export const metadata: Metadata = {
 };
 
 const GALLERY = [
-  { label: 'PISO PRINCIPAL · BARRAS', colSpan: 2, rowSpan: 2, h: 520 },
-  { label: 'CARDIO · REMO · BIKE', colSpan: 1, rowSpan: 1, h: 250 },
+  { label: 'SALA PRINCIPAL', colSpan: 2, rowSpan: 2, h: 520, src: '/sala-principal.jpeg' },
+  { label: 'SALA SECUNDÁRIA', colSpan: 1, rowSpan: 1, h: 250, src: '/sala-secundaria.jpeg' },
   { label: 'ZONA LIVRE · HALTERES', colSpan: 1, rowSpan: 1, h: 250 },
   { label: 'TATAMI · JIU JITSU', colSpan: 2, rowSpan: 1, h: 300 },
   { label: 'PILATES · REFORMER', colSpan: 1, rowSpan: 1, h: 320 },
@@ -66,9 +67,19 @@ export default function EspacoPage() {
             {GALLERY.map((g, i) => (
               <div
                 key={i}
-                style={{ gridColumn: `span ${g.colSpan}`, gridRow: `span ${g.rowSpan}` }}
+                style={{ gridColumn: `span ${g.colSpan}`, gridRow: `span ${g.rowSpan}`, position: 'relative', minHeight: g.h }}
               >
-                <Photo h={g.h} label={g.label} />
+                {g.src ? (
+                  <Image
+                    src={g.src}
+                    alt={g.label}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    sizes="(max-width:980px) 50vw, 33vw"
+                  />
+                ) : (
+                  <Photo h={g.h} label={g.label} />
+                )}
               </div>
             ))}
           </div>
