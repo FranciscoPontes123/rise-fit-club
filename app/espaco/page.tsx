@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 };
 
 const GALLERY = [
-  { label: 'SALA PRINCIPAL', colSpan: 2, h: 500, src: '/sala-principal.jpeg', sizes: '(max-width:760px) 100vw, 66vw' },
-  { label: 'SALA SECUNDÁRIA', colSpan: 1, h: 500, src: '/sala-secundaria.jpeg', sizes: '(max-width:760px) 100vw, 33vw' },
+  { label: 'SALA SECUNDÁRIA', colSpan: 2, h: 500, src: '/sala-secundaria.jpeg', sizes: '(max-width:760px) 100vw, 66vw' },
+  { label: 'SALA PRINCIPAL', colSpan: 1, h: 500, src: '/sala-principal.jpeg', sizes: '(max-width:760px) 100vw, 33vw' },
   { label: 'ESTÚDIO · AULAS DE GRUPO', colSpan: 3, h: 380 },
 ];
 
