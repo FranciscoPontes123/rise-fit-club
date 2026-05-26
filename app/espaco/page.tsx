@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 };
 
 const GALLERY = [
-  { label: 'SALA PRINCIPAL', colSpan: 2, rowSpan: 2, h: 520, src: '/sala-principal.jpeg' },
-  { label: 'SALA SECUNDÁRIA', colSpan: 1, rowSpan: 1, h: 250, src: '/sala-secundaria.jpeg' },
+  { label: 'SALA PRINCIPAL', colSpan: 2, rowSpan: 2, h: 520, src: '/sala-principal.jpeg', sizes: '(max-width:980px) 100vw, 50vw' },
+  { label: 'SALA SECUNDÁRIA', colSpan: 1, rowSpan: 1, h: 250, src: '/sala-secundaria.jpeg', sizes: '(max-width:980px) 50vw, 25vw' },
   { label: 'ZONA LIVRE · HALTERES', colSpan: 1, rowSpan: 1, h: 250 },
   { label: 'TATAMI · JIU JITSU', colSpan: 2, rowSpan: 1, h: 300 },
   { label: 'PILATES · REFORMER', colSpan: 1, rowSpan: 1, h: 320 },
@@ -75,7 +75,8 @@ export default function EspacoPage() {
                     alt={g.label}
                     fill
                     style={{ objectFit: 'cover' }}
-                    sizes="(max-width:980px) 50vw, 33vw"
+                    sizes={g.sizes ?? '(max-width:980px) 50vw, 25vw'}
+                    quality={90}
                   />
                 ) : (
                   <Photo h={g.h} label={g.label} />
