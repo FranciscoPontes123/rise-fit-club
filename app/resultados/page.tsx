@@ -18,7 +18,7 @@ export default function ResultadosPage() {
         <div className="container">
           <div className="eyebrow" style={{ marginBottom: 20 }}>— 04 / Resultados & Feedback</div>
           <h1 style={{ fontSize: 'clamp(56px,9vw,140px)', maxWidth: '14ch' }}>
-            Histórias <span className="gold">reais</span>. Sem antes-e-depois falsos.
+            Resultados dos nossos <span className="gold">membros</span>.
           </h1>
         </div>
       </section>
