@@ -42,12 +42,10 @@ export default function StaffTeaser() {
               }}
               className="staff-card"
             >
-              <Photo h={460} label={`STAFF · ${t.name.toUpperCase()}`} />
-
-              {/* Info overlay at bottom */}
+              <Photo h={460} label={t.name.toUpperCase()} />
               <div
                 style={{
-                  padding: '20px 22px 22px',
+                  padding: '18px 22px 20px',
                   borderTop: '3px solid var(--gold)',
                   background: '#111',
                 }}
@@ -75,18 +73,6 @@ export default function StaffTeaser() {
                   }}
                 >
                   {t.name}
-                </div>
-                <div
-                  className="gold"
-                  style={{
-                    fontSize: 11,
-                    marginTop: 6,
-                    fontFamily: 'var(--mono)',
-                    letterSpacing: '.12em',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {t.role}
                 </div>
               </div>
             </article>

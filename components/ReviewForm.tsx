@@ -13,7 +13,7 @@ export default function ReviewForm() {
   const [nomeErr, setNomeErr] = useState('');
   const [textoErr, setTextoErr] = useState('');
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     let ok = true;
     if (!nome.trim()) { setNomeErr('Indica o teu nome.'); ok = false; } else setNomeErr('');
@@ -55,11 +55,23 @@ export default function ReviewForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       {/* Stars */}
       <div>
-        <div className="eyebrow" style={{ marginBottom: 10 }}>— Classificação</div>
-        <div style={{ display: 'flex', gap: 6 }}>
+        <label
+          style={{
+            display: 'block',
+            fontFamily: 'var(--mono)',
+            fontSize: 11,
+            letterSpacing: '.18em',
+            textTransform: 'uppercase',
+            color: 'var(--gold)',
+            marginBottom: 10,
+          }}
+        >
+          Classificação
+        </label>
+        <div style={{ display: 'flex', gap: 4 }}>
           {[1, 2, 3, 4, 5].map((n) => (
             <button
               key={n}
@@ -71,8 +83,8 @@ export default function ReviewForm() {
                 border: 'none',
                 cursor: 'pointer',
                 padding: '4px 2px',
-                fontSize: 26,
-                color: n <= stars ? 'var(--gold)' : '#333',
+                fontSize: 28,
+                color: n <= stars ? 'var(--gold)' : '#2a2a2a',
                 transition: 'color .15s',
               }}
             >
@@ -83,22 +95,24 @@ export default function ReviewForm() {
       </div>
 
       {/* Name */}
-      <div>
+      <div className="rf-field">
+        <label htmlFor="rf-nome">Nome</label>
         <input
-          className="field"
+          id="rf-nome"
           type="text"
           placeholder="O teu nome"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
           disabled={state === 'sending'}
         />
-        {nomeErr && <div className="err-msg">{nomeErr}</div>}
+        {nomeErr && <div className="err-msg" style={{ marginTop: 6 }}>{nomeErr}</div>}
       </div>
 
       {/* Review text */}
-      <div>
+      <div className="rf-field">
+        <label htmlFor="rf-texto">A tua experiência</label>
         <textarea
-          className="field"
+          id="rf-texto"
           placeholder="Conta a tua experiência no Rise..."
           value={texto}
           onChange={(e) => setTexto(e.target.value)}
@@ -106,7 +120,7 @@ export default function ReviewForm() {
           rows={5}
           style={{ resize: 'vertical' }}
         />
-        {textoErr && <div className="err-msg">{textoErr}</div>}
+        {textoErr && <div className="err-msg" style={{ marginTop: 6 }}>{textoErr}</div>}
       </div>
 
       {state === 'error' && (
@@ -121,6 +135,42 @@ export default function ReviewForm() {
       >
         {state === 'sending' ? 'A enviar…' : <>Enviar review <IconArrow rot={-90} /></>}
       </button>
+
+      <style>{`
+        .rf-field {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .rf-field label {
+          font-family: var(--mono);
+          font-size: 11px;
+          letter-spacing: .18em;
+          text-transform: uppercase;
+          color: var(--gold);
+        }
+        .rf-field input,
+        .rf-field textarea {
+          background: #111;
+          border: 1px solid #3a3a3a;
+          color: #fff;
+          padding: 14px 16px;
+          font-size: 15px;
+          font-family: var(--body-font);
+          outline: none;
+          transition: border-color .2s, background .2s;
+          width: 100%;
+        }
+        .rf-field input:focus,
+        .rf-field textarea:focus {
+          border-color: var(--gold);
+          background: #161616;
+        }
+        .rf-field input::placeholder,
+        .rf-field textarea::placeholder {
+          color: #555;
+        }
+      `}</style>
     </form>
   );
 }

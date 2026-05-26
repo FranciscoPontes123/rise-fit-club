@@ -1,5 +1,4 @@
 import Stars from '@/components/ui/Stars';
-import Marquee from '@/components/ui/Marquee';
 import { REVIEWS } from '@/data/reviews';
 
 function ReviewCard({ r }: { r: typeof REVIEWS[number] }) {
@@ -12,9 +11,10 @@ function ReviewCard({ r }: { r: typeof REVIEWS[number] }) {
         display: 'flex',
         flexDirection: 'column',
         gap: 18,
-        width: 340,
+        width: 320,
         flexShrink: 0,
         minHeight: 220,
+        scrollSnapAlign: 'start',
       }}
     >
       <Stars value={r.stars} />
@@ -73,7 +73,7 @@ function ReviewCard({ r }: { r: typeof REVIEWS[number] }) {
 export default function SocialProof() {
   return (
     <section className="page" style={{ overflow: 'hidden' }}>
-      <div className="container" style={{ marginBottom: 48 }}>
+      <div className="container" style={{ marginBottom: 40 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 24 }}>
           <div>
             <div className="eyebrow" style={{ marginBottom: 14 }}>— Testemunhos</div>
@@ -97,11 +97,34 @@ export default function SocialProof() {
         </div>
       </div>
 
-      <Marquee speed={28} gap={16}>
+      {/* Horizontal scroll */}
+      <div
+        style={{
+          display: 'flex',
+          gap: 2,
+          overflowX: 'auto',
+          scrollSnapType: 'x mandatory',
+          paddingLeft: 'max(32px, calc((100vw - 1320px) / 2 + 32px))',
+          paddingRight: 32,
+          paddingBottom: 16,
+          cursor: 'grab',
+        }}
+        className="reviews-scroll"
+      >
         {REVIEWS.map((r, i) => (
           <ReviewCard key={i} r={r} />
         ))}
-      </Marquee>
+      </div>
+
+      <style>{`
+        .reviews-scroll::-webkit-scrollbar { height: 2px; }
+        .reviews-scroll::-webkit-scrollbar-track { background: #111; }
+        .reviews-scroll::-webkit-scrollbar-thumb { background: var(--gold); }
+        .reviews-scroll:active { cursor: grabbing; }
+        @media (max-width: 760px) {
+          .reviews-scroll { padding-left: 20px !important; }
+        }
+      `}</style>
     </section>
   );
 }

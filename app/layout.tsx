@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { Barlow_Condensed, Syne, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
+import ClientLayout from '@/components/ClientLayout';
 
 const barlowCondensed = Barlow_Condensed({
   variable: '--font-barlow-condensed',
@@ -44,9 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${barlowCondensed.variable} ${syne.variable} ${jetbrainsMono.variable}`}
     >
       <body>
-        <Nav />
-        <main>{children}</main>
-        <Footer />
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
