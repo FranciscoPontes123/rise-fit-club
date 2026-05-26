@@ -15,11 +15,10 @@ export default function StaffPage() {
         <div className="container">
           <div className="eyebrow" style={{ marginBottom: 20 }}>— Staff</div>
           <h1 style={{ fontSize: 'clamp(56px,9vw,140px)', maxWidth: '14ch' }}>
-            Coaches que <span className="gold">cobram</span>. Quando faltas, sentem.
+            A tua <span className="gold">Rise Team</span>.
           </h1>
           <p className="muted" style={{ fontSize: 18, maxWidth: 640, marginTop: 24, lineHeight: 1.6 }}>
-            Equipa pequena. Especialistas em força, mobilidade, pilates clínico e BJJ.
-            Tratamento adulto, programa real, progressão medida.
+            Equipa dedicada a ti, com especialistas em força, mobilidade, pilates clínico e perda de peso.
           </p>
         </div>
       </section>
