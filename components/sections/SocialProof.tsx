@@ -81,19 +81,6 @@ export default function SocialProof() {
               Feedback dos nossos <span className="gold">membros</span>.
             </h2>
           </div>
-          <div
-            style={{
-              fontFamily: 'var(--mono)',
-              fontSize: 10,
-              color: '#555',
-              letterSpacing: '.2em',
-              textTransform: 'uppercase',
-              alignSelf: 'flex-end',
-              paddingBottom: 6,
-            }}
-          >
-            Google Reviews · 5.0 ★
-          </div>
         </div>
       </div>
 

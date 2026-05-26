@@ -43,18 +43,6 @@ export default function StaffPage() {
                 >
                   <div
                     style={{
-                      fontFamily: 'var(--mono)',
-                      fontSize: 10,
-                      color: '#555',
-                      letterSpacing: '.2em',
-                      textTransform: 'uppercase',
-                      marginBottom: 6,
-                    }}
-                  >
-                    0{i + 1}
-                  </div>
-                  <div
-                    style={{
                       fontFamily: 'var(--head-font)',
                       fontWeight: 800,
                       fontSize: 28,

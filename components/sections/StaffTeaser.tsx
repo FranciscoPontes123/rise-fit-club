@@ -51,18 +51,6 @@ export default function StaffTeaser() {
                 }}
               >
                 <div
-                  className="muted"
-                  style={{
-                    fontFamily: 'var(--mono)',
-                    fontSize: 10,
-                    letterSpacing: '.2em',
-                    textTransform: 'uppercase',
-                    marginBottom: 6,
-                  }}
-                >
-                  0{i + 1}
-                </div>
-                <div
                   style={{
                     fontFamily: 'var(--head-font)',
                     fontWeight: 800,
