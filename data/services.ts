@@ -34,4 +34,11 @@ export const SERVICES = [
     sub: 'Tatami próprio',
     desc: 'Aulas de BJJ no tatami. Iniciantes e avançados. Disciplina e técnica.',
   },
+  {
+    id: 'fitboxe',
+    icon: 'group',
+    name: 'Fit Boxe',
+    sub: 'Cardio e técnica',
+    desc: 'Treino de boxe adaptado para todos os níveis. Condição física, coordenação e descarga de energia.',
+  },
 ] as const;

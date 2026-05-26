@@ -13,7 +13,7 @@ export default function FaqPage() {
         <div className="container">
           <div className="eyebrow" style={{ marginBottom: 20 }}>— 06 / FAQ</div>
           <h1 style={{ fontSize: 'clamp(56px,9vw,140px)', maxWidth: '14ch' }}>
-            Perguntas <span className="gold">diretas</span>. Respostas diretas.
+            <span className="gold">FAQ</span>
           </h1>
         </div>
       </section>
