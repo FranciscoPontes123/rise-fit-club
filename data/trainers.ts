@@ -5,4 +5,5 @@ export const TRAINERS = [
   { name: 'Sara Santos' },
   { name: 'Ana Dias' },
   { name: 'Dora Sol' },
+  { name: 'Hugo Patrão' },
 ];
