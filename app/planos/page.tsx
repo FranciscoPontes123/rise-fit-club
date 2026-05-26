@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PLANS } from '@/data/plans';
 import { IconCheck, IconDash, IconClock, IconArrow, IconPerson, IconGroup } from '@/components/icons';
+import SpotlightCard from '@/components/ui/SpotlightCard';
+import Magnet from '@/components/ui/Magnet';
 
 export const metadata: Metadata = {
   title: 'Planos — Rise Fit Club',
@@ -134,8 +136,9 @@ export default function PlanosPage() {
             className="plan-grid"
           >
             {PLANS.map((p) => (
-              <article
+              <SpotlightCard
                 key={p.id}
+                spotlightColor={p.featured ? 'rgba(201,168,76,0.16)' : 'rgba(201,168,76,0.09)'}
                 style={{
                   position: 'relative',
                   background: p.featured ? '#181410' : 'var(--surface)',
@@ -148,7 +151,6 @@ export default function PlanosPage() {
                   boxShadow: p.featured ? '0 30px 80px -30px rgba(201,168,76,.35)' : 'none',
                 }}
               >
-
                 <div>
                   <div
                     className="muted"
@@ -242,14 +244,16 @@ export default function PlanosPage() {
                   </ul>
                 </div>
 
-                <Link
-                  href="/contacto"
-                  className="btn btn-gold"
-                  style={{ justifyContent: 'center', marginTop: 'auto', textAlign: 'center' }}
-                >
-                  Quero o plano {p.name}
-                </Link>
-              </article>
+                <Magnet style={{ marginTop: 'auto' }}>
+                  <Link
+                    href="/contacto"
+                    className="btn btn-gold"
+                    style={{ justifyContent: 'center', width: '100%' }}
+                  >
+                    Quero o plano {p.name}
+                  </Link>
+                </Magnet>
+              </SpotlightCard>
             ))}
           </div>
 

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import RiseLogo from './RiseLogo';
 import { IconMenu, IconClose } from './icons';
+import Magnet from './ui/Magnet';
 
 const NAV_ITEMS = [
   { href: '/', label: 'Início' },
@@ -92,9 +93,11 @@ export default function Nav() {
 
         {/* CTA + burger */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <Link href="/contacto" className="btn btn-gold" style={{ padding: '12px 18px' }}>
-            Começa Já
-          </Link>
+          <Magnet>
+            <Link href="/contacto" className="btn btn-gold" style={{ padding: '12px 18px' }}>
+              Começa Já
+            </Link>
+          </Magnet>
           <button
             className="nav-burger"
             onClick={() => setMobileOpen((o) => !o)}

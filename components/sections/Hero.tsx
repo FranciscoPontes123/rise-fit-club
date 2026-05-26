@@ -1,5 +1,17 @@
 import Link from 'next/link';
 import { IconArrow } from '@/components/icons';
+import Aurora from '@/components/ui/Aurora';
+import CountUp from '@/components/ui/CountUp';
+import Magnet from '@/components/ui/Magnet';
+
+const STATS = [
+  { display: '24/7', countTo: null,  suffix: '',  v: 'Acesso por app Danalock' },
+  { display: '5',    countTo: 5,     suffix: '',  v: 'Modalidades sob o mesmo tecto' },
+  { display: '35€',  countTo: 35,    suffix: '€', v: 'Plano de acesso a partir de' },
+  { display: '0€',   countTo: null,  suffix: '',  v: 'Sem joia de inscrição' },
+];
+
+const WORDS = ['ELEVA', 'O', 'TEU', 'NÍVEL'] as const;
 
 export default function Hero() {
   return (
@@ -38,6 +50,8 @@ export default function Hero() {
             }}
           />
         </div>
+        {/* Aurora glow layer */}
+        <Aurora />
       </div>
 
       <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: 140, paddingBottom: 80, width: '100%' }}>
@@ -56,15 +70,17 @@ export default function Hero() {
           <div className="eyebrow" style={{ color: '#A0A0A0' }}>Est. — Underground Gym · Não é uma cadeia</div>
         </div>
 
-        {/* H1 */}
+        {/* H1 with word-by-word blur reveal */}
         <h1 style={{ fontSize: 'clamp(64px,12vw,200px)', lineHeight: 0.86, maxWidth: '13ch' }}>
-          {['ELEVA', 'O', 'TEU', 'NÍVEL'].map((w, i) => (
+          {WORDS.map((w, i) => (
             <span
               key={i}
+              className="hero-word"
               style={{
                 display: 'inline-block',
                 marginRight: '.2em',
                 color: i === 1 ? 'var(--gold)' : '#fff',
+                animationDelay: `${i * 110 + 150}ms`,
               }}
             >
               {w}
@@ -85,12 +101,16 @@ export default function Hero() {
             style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'flex-end' }}
             className="hero-cta"
           >
-            <Link href="/planos" className="btn btn-gold">
-              Ver Planos <IconArrow rot={-90} />
-            </Link>
-            <Link href="/contacto" className="btn btn-ghost">
-              Quero ser contactado
-            </Link>
+            <Magnet>
+              <Link href="/planos" className="btn btn-gold">
+                Ver Planos <IconArrow rot={-90} />
+              </Link>
+            </Magnet>
+            <Magnet>
+              <Link href="/contacto" className="btn btn-ghost">
+                Quero ser contactado
+              </Link>
+            </Magnet>
           </div>
         </div>
 
@@ -105,12 +125,7 @@ export default function Hero() {
           }}
           className="hero-stats"
         >
-          {[
-            { k: '24/7', v: 'Acesso por app Danalock' },
-            { k: '5', v: 'Modalidades sob o mesmo tecto' },
-            { k: '35€', v: 'Plano de acesso a partir de' },
-            { k: '0€', v: 'Sem joia de inscrição' },
-          ].map((s, i) => (
+          {STATS.map((s, i) => (
             <div
               key={i}
               style={{
@@ -127,7 +142,11 @@ export default function Hero() {
                   lineHeight: 1,
                 }}
               >
-                {s.k}
+                {s.countTo != null ? (
+                  <CountUp to={s.countTo} suffix={s.suffix} duration={1.6} />
+                ) : (
+                  s.display
+                )}
               </div>
               <div
                 className="muted"
@@ -173,13 +192,21 @@ export default function Hero() {
       </div>
 
       <style>{`
+        @keyframes word-reveal {
+          from { opacity: 0; filter: blur(14px); transform: translateY(10px); }
+          to   { opacity: 1; filter: blur(0px);  transform: translateY(0); }
+        }
+        .hero-word {
+          opacity: 0;
+          animation: word-reveal 700ms cubic-bezier(.22,1,.36,1) both;
+        }
         @media (max-width: 880px) {
-          .hero-grid { grid-template-columns: 1fr !important; }
-          .hero-cta { justify-content: flex-start !important; }
+          .hero-grid  { grid-template-columns: 1fr !important; }
+          .hero-cta   { justify-content: flex-start !important; }
           .hero-stats { grid-template-columns: repeat(2,1fr) !important; }
           .hero-stats > div:nth-child(3) { border-left: none !important; border-top: 1px solid #2a2a2a; }
           .hero-stats > div:nth-child(4) { border-top: 1px solid #2a2a2a; }
-          .hero-side { display: none; }
+          .hero-side  { display: none; }
         }
       `}</style>
     </section>
