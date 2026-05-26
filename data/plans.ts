@@ -21,7 +21,7 @@ export const PLANS = [
     name: 'Intermédio',
     price: 55,
     kicker: '',
-    featured: true,
+    featured: false,
     hours: [
       'Seg–Sex · 06:00 – 24:00',
       'Sáb–Dom · 07:00 – 22:00',
