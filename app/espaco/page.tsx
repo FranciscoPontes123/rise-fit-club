@@ -11,14 +11,9 @@ export const metadata: Metadata = {
 };
 
 const GALLERY = [
-  { label: 'SALA PRINCIPAL', colSpan: 2, rowSpan: 2, h: 520, src: '/sala-principal.jpeg', sizes: '(max-width:980px) 100vw, 50vw' },
-  { label: 'SALA SECUNDÁRIA', colSpan: 1, rowSpan: 1, h: 250, src: '/sala-secundaria.jpeg', sizes: '(max-width:980px) 50vw, 25vw' },
-  { label: 'ZONA LIVRE · HALTERES', colSpan: 1, rowSpan: 1, h: 250 },
-  { label: 'TATAMI · JIU JITSU', colSpan: 2, rowSpan: 1, h: 300 },
-  { label: 'PILATES · REFORMER', colSpan: 1, rowSpan: 1, h: 320 },
-  { label: 'ESTÚDIO · AULAS GRUPO', colSpan: 1, rowSpan: 1, h: 280 },
-  { label: 'BALNEÁRIOS', colSpan: 1, rowSpan: 1, h: 280 },
-  { label: 'RACK OLÍMPICO · 4 ESTAÇÕES', colSpan: 2, rowSpan: 1, h: 340 },
+  { label: 'SALA PRINCIPAL', colSpan: 2, h: 500, src: '/sala-principal.jpeg', sizes: '(max-width:760px) 100vw, 66vw' },
+  { label: 'SALA SECUNDÁRIA', colSpan: 1, h: 500, src: '/sala-secundaria.jpeg', sizes: '(max-width:760px) 100vw, 33vw' },
+  { label: 'ESTÚDIO · AULAS DE GRUPO', colSpan: 3, h: 380 },
 ];
 
 const HIGHLIGHTS = [
@@ -61,13 +56,13 @@ export default function EspacoPage() {
       <section style={{ padding: '40px 0 80px' }}>
         <div className="container">
           <div
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16 }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 16 }}
             className="gallery-grid"
           >
             {GALLERY.map((g, i) => (
               <div
                 key={i}
-                style={{ gridColumn: `span ${g.colSpan}`, gridRow: `span ${g.rowSpan}`, position: 'relative', minHeight: g.h }}
+                style={{ gridColumn: `span ${g.colSpan}`, position: 'relative', minHeight: g.h }}
               >
                 {g.src ? (
                   <Image
@@ -86,12 +81,9 @@ export default function EspacoPage() {
           </div>
         </div>
         <style>{`
-          @media (max-width: 980px) {
-            .gallery-grid { grid-template-columns: repeat(2,1fr) !important; }
-            .gallery-grid > div { grid-column: span 1 !important; grid-row: span 1 !important; }
-          }
-          @media (max-width: 560px) {
+          @media (max-width: 760px) {
             .gallery-grid { grid-template-columns: 1fr !important; }
+            .gallery-grid > div { grid-column: span 1 !important; }
           }
         `}</style>
       </section>
