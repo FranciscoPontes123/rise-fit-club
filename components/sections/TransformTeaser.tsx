@@ -5,14 +5,14 @@ import { IconArrow } from '@/components/icons';
 
 export default function TransformTeaser() {
   return (
-    <section className="page" style={{ background: '#0a0a0a' }}>
+    <section className="page" style={{ background: '#080808' }}>
       <div className="container">
         <div
           style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'flex-end',
-            marginBottom: 48,
+            marginBottom: 56,
             gap: 24,
             flexWrap: 'wrap',
           }}
@@ -31,40 +31,77 @@ export default function TransformTeaser() {
         </div>
 
         <div
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}
-          className="staff-grid"
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 2 }}
+          className="transform-grid"
         >
           {TRANSFORMATIONS.map((t, i) => (
-            <article
-              key={i}
-              style={{ background: 'var(--surface)', border: '1px solid var(--line)' }}
-            >
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
-                <Photo h={300} label="ANTES" />
-                <Photo h={300} label="DEPOIS" />
+            <article key={i} style={{ background: '#0f0f0f' }}>
+              {/* Before/after split */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1 }}>
+                <div style={{ position: 'relative' }}>
+                  <Photo h={280} label="ANTES" />
+                  <span
+                    style={{
+                      position: 'absolute',
+                      top: 10,
+                      left: 10,
+                      fontFamily: 'var(--mono)',
+                      fontSize: 9,
+                      letterSpacing: '.2em',
+                      textTransform: 'uppercase',
+                      color: '#888',
+                      background: 'rgba(0,0,0,.6)',
+                      padding: '3px 6px',
+                    }}
+                  >
+                    Antes
+                  </span>
+                </div>
+                <div style={{ position: 'relative' }}>
+                  <Photo h={280} label="DEPOIS" />
+                  <span
+                    style={{
+                      position: 'absolute',
+                      top: 10,
+                      left: 10,
+                      fontFamily: 'var(--mono)',
+                      fontSize: 9,
+                      letterSpacing: '.2em',
+                      textTransform: 'uppercase',
+                      color: 'var(--gold)',
+                      background: 'rgba(0,0,0,.6)',
+                      padding: '3px 6px',
+                    }}
+                  >
+                    Depois
+                  </span>
+                </div>
               </div>
-              <div style={{ padding: '24px 22px' }}>
+
+              {/* Info */}
+              <div style={{ padding: '20px 20px 22px', borderTop: '1px solid #1a1a1a' }}>
                 <div
                   style={{
                     display: 'flex',
                     justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginBottom: 12,
+                    alignItems: 'baseline',
+                    marginBottom: 10,
                   }}
                 >
                   <div
                     style={{
                       fontFamily: 'var(--head-font)',
                       fontWeight: 800,
-                      fontSize: 22,
+                      fontSize: 20,
                       textTransform: 'uppercase',
+                      letterSpacing: '.02em',
                     }}
                   >
                     {t.name}
                   </div>
                   <div
                     className="gold"
-                    style={{ fontFamily: 'var(--head-font)', fontWeight: 800, fontSize: 24 }}
+                    style={{ fontFamily: 'var(--head-font)', fontWeight: 900, fontSize: 22 }}
                   >
                     {t.weight}
                   </div>
@@ -73,15 +110,15 @@ export default function TransformTeaser() {
                   className="muted"
                   style={{
                     fontFamily: 'var(--mono)',
-                    fontSize: 11,
+                    fontSize: 10,
                     letterSpacing: '.18em',
                     textTransform: 'uppercase',
-                    marginBottom: 14,
+                    marginBottom: 12,
                   }}
                 >
                   {t.months} meses · Programa PT
                 </div>
-                <p style={{ fontSize: 14, lineHeight: 1.55, color: '#d0d0d0' }}>
+                <p style={{ fontSize: 13, lineHeight: 1.55, color: '#888' }}>
                   &ldquo;{t.quote}&rdquo;
                 </p>
               </div>
@@ -89,6 +126,8 @@ export default function TransformTeaser() {
           ))}
         </div>
       </div>
+
+      <style>{`@media (max-width: 900px) { .transform-grid { grid-template-columns: 1fr !important; } }`}</style>
     </section>
   );
 }

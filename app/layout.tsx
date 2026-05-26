@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Barlow_Condensed, Inter, JetBrains_Mono } from 'next/font/google';
+import { Barlow_Condensed, Syne, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
@@ -11,10 +11,10 @@ const barlowCondensed = Barlow_Condensed({
   display: 'swap',
 });
 
-const inter = Inter({
-  variable: '--font-inter',
+const syne = Syne({
+  variable: '--font-syne',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700', '800'],
   display: 'swap',
 });
 
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="pt"
-      className={`${barlowCondensed.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${barlowCondensed.variable} ${syne.variable} ${jetbrainsMono.variable}`}
     >
       <body>
         <Nav />

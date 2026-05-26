@@ -16,13 +16,36 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: '#080808',
-        borderTop: '1px solid #1a1a1a',
+        background: '#060606',
+        borderTop: '2px solid var(--gold)',
         paddingTop: 80,
-        paddingBottom: 32,
+        paddingBottom: 0,
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      <div className="container">
+      {/* Watermark */}
+      <div
+        aria-hidden
+        style={{
+          position: 'absolute',
+          bottom: -20,
+          right: -10,
+          fontFamily: 'var(--head-font)',
+          fontWeight: 900,
+          fontSize: 'clamp(140px, 22vw, 300px)',
+          color: 'transparent',
+          WebkitTextStroke: '1px #141414',
+          lineHeight: 0.85,
+          letterSpacing: '-.02em',
+          pointerEvents: 'none',
+          userSelect: 'none',
+        }}
+      >
+        RISE
+      </div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div
           style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1.4fr', gap: 48 }}
           className="foot-grid"
@@ -30,22 +53,30 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
-              <RiseLogo size={56} />
+              <RiseLogo size={52} />
               <span
                 style={{
                   fontFamily: 'var(--head-font)',
                   fontWeight: 900,
-                  letterSpacing: '.06em',
-                  fontSize: 22,
+                  letterSpacing: '.08em',
+                  fontSize: 20,
                   lineHeight: 1,
                 }}
               >
                 RISE
                 <br />
-                <span style={{ color: 'var(--gold)', fontSize: 13, letterSpacing: '.3em' }}>FIT · CLUB</span>
+                <span style={{ color: 'var(--gold)', fontSize: 11, letterSpacing: '.32em' }}>FIT · CLUB</span>
               </span>
             </div>
-            <p className="muted" style={{ maxWidth: 320, lineHeight: 1.55, fontSize: 14 }}>
+            <p
+              style={{
+                maxWidth: 300,
+                lineHeight: 1.6,
+                fontSize: 14,
+                color: '#666',
+                fontFamily: 'var(--body-font)',
+              }}
+            >
               Ginásio feito para todos. Se queres liberdade, o Rise é para ti.
               Se queres acompanhamento, o Rise é para ti.
             </p>
@@ -53,19 +84,18 @@ export default function Footer() {
 
           {/* Navegar */}
           <div>
-            <div className="eyebrow" style={{ marginBottom: 18 }}>— Navegar</div>
+            <div className="eyebrow" style={{ marginBottom: 20 }}>— Navegar</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {NAV_LINKS.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     style={{
-                      fontFamily: 'var(--head-font)',
-                      fontWeight: 600,
-                      letterSpacing: '.06em',
+                      fontFamily: 'var(--mono)',
+                      fontSize: 11,
+                      letterSpacing: '.12em',
                       textTransform: 'uppercase',
-                      fontSize: 14,
-                      opacity: 0.85,
+                      color: '#555',
                       transition: 'color .15s',
                     }}
                     className="foot-link"
@@ -79,7 +109,7 @@ export default function Footer() {
 
           {/* Modalidades */}
           <div>
-            <div className="eyebrow" style={{ marginBottom: 18 }}>— Modalidades</div>
+            <div className="eyebrow" style={{ marginBottom: 20 }}>— Modalidades</div>
             <ul
               style={{
                 listStyle: 'none',
@@ -88,8 +118,11 @@ export default function Footer() {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 10,
-                fontSize: 14,
-                color: 'var(--muted)',
+                fontFamily: 'var(--mono)',
+                fontSize: 11,
+                letterSpacing: '.12em',
+                textTransform: 'uppercase',
+                color: '#555',
               }}
             >
               <li>Treino Livre</li>
@@ -102,7 +135,7 @@ export default function Footer() {
 
           {/* Contacto */}
           <div>
-            <div className="eyebrow" style={{ marginBottom: 18 }}>— Contacto</div>
+            <div className="eyebrow" style={{ marginBottom: 20 }}>— Contacto</div>
             <ul
               style={{
                 listStyle: 'none',
@@ -110,22 +143,22 @@ export default function Footer() {
                 margin: 0,
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 14,
+                gap: 16,
                 fontFamily: 'var(--mono)',
-                fontSize: 13,
+                fontSize: 12,
                 lineHeight: 1.55,
               }}
             >
               <li style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
                 <IconMap />
-                <span className="muted">
+                <span style={{ color: '#666' }}>
                   Av. General Humberto Delgado 2A<br />
                   Almargem do Bispo, Sintra
                 </span>
               </li>
               <li style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                 <IconPhone />
-                <span className="muted">+351 963 329 814</span>
+                <span style={{ color: '#666' }}>+351 963 329 814</span>
               </li>
               <li style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                 <IconIG />
@@ -134,6 +167,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="gold"
+                  style={{ fontSize: 12 }}
                 >
                   @rise.fitclub
                 </a>
@@ -145,8 +179,9 @@ export default function Footer() {
         <div
           style={{
             marginTop: 72,
-            paddingTop: 24,
-            borderTop: '1px solid #1a1a1a',
+            paddingTop: 20,
+            paddingBottom: 24,
+            borderTop: '1px solid #141414',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
@@ -155,23 +190,23 @@ export default function Footer() {
           }}
         >
           <div
-            className="muted"
             style={{
               fontFamily: 'var(--mono)',
-              fontSize: 11,
-              letterSpacing: '.18em',
+              fontSize: 10,
+              letterSpacing: '.2em',
               textTransform: 'uppercase',
+              color: '#333',
             }}
           >
             © 2026 Rise Fit Club · Almargem do Bispo, Sintra · PT
           </div>
           <div
-            className="muted"
             style={{
               fontFamily: 'var(--mono)',
-              fontSize: 11,
-              letterSpacing: '.18em',
+              fontSize: 10,
+              letterSpacing: '.2em',
               textTransform: 'uppercase',
+              color: '#333',
             }}
           >
             Privacidade · Termos · Cookies
@@ -186,7 +221,7 @@ export default function Footer() {
         @media (max-width: 560px) {
           .foot-grid { grid-template-columns: 1fr !important; }
         }
-        .foot-link:hover { color: var(--gold) !important; opacity: 1 !important; }
+        .foot-link:hover { color: var(--gold) !important; }
       `}</style>
     </footer>
   );

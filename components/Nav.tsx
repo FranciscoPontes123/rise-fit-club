@@ -23,7 +23,7 @@ export default function Nav() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -40,33 +40,47 @@ export default function Nav() {
         left: 0,
         right: 0,
         zIndex: 50,
-        background: scrolled ? 'rgba(13,13,13,.92)' : 'transparent',
-        backdropFilter: scrolled ? 'saturate(140%) blur(10px)' : 'none',
-        borderBottom: scrolled ? '1px solid #1f1f1f' : '1px solid transparent',
-        transition: 'all .25s ease',
+        background: scrolled ? '#090909' : 'transparent',
+        borderBottom: scrolled ? '1px solid #1e1e1e' : '1px solid transparent',
+        transition: 'background .2s ease, border-color .2s ease',
       }}
     >
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 78 }}>
+      {/* Gold accent line — only when scrolled */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: 2,
+          background: 'var(--gold)',
+          transform: scrolled ? 'scaleX(1)' : 'scaleX(0)',
+          transformOrigin: 'left',
+          transition: 'transform .35s cubic-bezier(.16,1,.3,1)',
+        }}
+      />
+
+      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 74 }}>
         {/* Logo */}
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <RiseLogo size={46} />
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <RiseLogo size={40} />
           <span
             style={{
               fontFamily: 'var(--head-font)',
               fontWeight: 900,
-              letterSpacing: '.06em',
-              fontSize: 18,
+              letterSpacing: '.08em',
+              fontSize: 16,
               lineHeight: 1,
             }}
           >
             RISE
             <br />
-            <span style={{ color: 'var(--gold)', fontSize: 11, letterSpacing: '.3em' }}>FIT · CLUB</span>
+            <span style={{ color: 'var(--gold)', fontSize: 10, letterSpacing: '.32em' }}>FIT · CLUB</span>
           </span>
         </Link>
 
         {/* Desktop nav */}
-        <nav style={{ display: 'flex', gap: 36 }} className="nav-desktop">
+        <nav style={{ display: 'flex', gap: 32 }} className="nav-desktop">
           {NAV_ITEMS.map((item) => {
             const active = pathname === item.href;
             return (
@@ -74,16 +88,17 @@ export default function Nav() {
                 key={item.href}
                 href={item.href}
                 style={{
-                  fontFamily: 'var(--head-font)',
-                  fontWeight: 600,
-                  fontSize: 15,
-                  letterSpacing: '.1em',
+                  fontFamily: 'var(--mono)',
+                  fontWeight: 500,
+                  fontSize: 11,
+                  letterSpacing: '.18em',
                   textTransform: 'uppercase',
-                  color: active ? 'var(--gold)' : '#fff',
+                  color: active ? 'var(--gold)' : '#888',
+                  transition: 'color .15s',
+                  paddingBottom: 2,
                   borderBottom: active ? '1px solid var(--gold)' : '1px solid transparent',
-                  paddingBottom: 4,
-                  transition: 'all .2s',
                 }}
+                className="nav-link"
               >
                 {item.label}
               </Link>
@@ -94,7 +109,7 @@ export default function Nav() {
         {/* CTA + burger */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <Magnet>
-            <Link href="/contacto" className="btn btn-gold" style={{ padding: '12px 18px' }}>
+            <Link href="/contacto" className="btn btn-gold" style={{ padding: '10px 18px', fontSize: 12, letterSpacing: '.1em' }}>
               Começa Já
             </Link>
           </Magnet>
@@ -102,7 +117,7 @@ export default function Nav() {
             className="nav-burger"
             onClick={() => setMobileOpen((o) => !o)}
             aria-label="menu"
-            style={{ display: 'none' }}
+            style={{ display: 'none', color: '#fff', padding: 4 }}
           >
             {mobileOpen ? <IconClose /> : <IconMenu />}
           </button>
@@ -111,27 +126,32 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div style={{ background: '#0d0d0d', borderTop: '1px solid #1f1f1f', padding: '24px 0' }}>
-          <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            {NAV_ITEMS.map((item) => {
+        <div style={{ background: '#080808', borderTop: '2px solid var(--gold)', padding: '32px 0' }}>
+          <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+            {NAV_ITEMS.map((item, i) => {
               const active = pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   style={{
-                    padding: '14px 0',
+                    padding: '18px 0',
                     fontFamily: 'var(--head-font)',
-                    fontSize: 22,
-                    fontWeight: 700,
-                    letterSpacing: '.05em',
+                    fontSize: 28,
+                    fontWeight: 800,
+                    letterSpacing: '.04em',
                     textTransform: 'uppercase',
                     color: active ? 'var(--gold)' : '#fff',
-                    borderBottom: '1px solid #1a1a1a',
-                    display: 'block',
+                    borderBottom: '1px solid #141414',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
                   }}
                 >
                   {item.label}
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#444', letterSpacing: '.16em' }}>
+                    0{i + 1}
+                  </span>
                 </Link>
               );
             })}
@@ -144,6 +164,7 @@ export default function Nav() {
           .nav-desktop { display: none !important; }
           .nav-burger { display: flex !important; }
         }
+        .nav-link:hover { color: #fff !important; }
       `}</style>
     </header>
   );

@@ -6,7 +6,7 @@ import { ICON_MAP, IconArrow } from '@/components/icons';
 
 export default function ServicesStrip() {
   return (
-    <section className="page" style={{ paddingTop: 120, paddingBottom: 120 }}>
+    <section className="page">
       <div className="container">
         <div
           style={{
@@ -15,7 +15,7 @@ export default function ServicesStrip() {
             alignItems: 'flex-end',
             gap: 24,
             flexWrap: 'wrap',
-            marginBottom: 48,
+            marginBottom: 56,
           }}
         >
           <div>
@@ -31,88 +31,90 @@ export default function ServicesStrip() {
           </Link>
         </div>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(5,1fr)',
-            gap: 0,
-            border: '1px solid var(--line)',
-          }}
-          className="svc-grid"
-        >
+        <div style={{ borderTop: '1px solid var(--line)' }}>
           {SERVICES.map((s, i) => {
             const Ico = ICON_MAP[s.icon];
             return (
               <div
                 key={s.id}
+                className="svc-row"
                 style={{
-                  padding: '32px 28px',
-                  borderLeft: i === 0 ? 'none' : '1px solid var(--line)',
-                  background: 'var(--surface)',
-                  position: 'relative',
-                  minHeight: 280,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 18,
-                  transition: 'background .2s',
+                  display: 'grid',
+                  gridTemplateColumns: '64px 1fr 1.6fr 32px',
+                  gap: '0 32px',
+                  padding: '26px 0',
+                  borderBottom: '1px solid var(--line)',
+                  alignItems: 'center',
+                  transition: 'background .15s',
+                  cursor: 'default',
                 }}
-                className="svc-card"
               >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                {/* Index */}
+                <div
+                  style={{
+                    fontFamily: 'var(--mono)',
+                    fontSize: 11,
+                    color: '#444',
+                    letterSpacing: '.2em',
+                    paddingLeft: 4,
+                  }}
+                  className="svc-index"
+                >
+                  0{i + 1}
+                </div>
+
+                {/* Name + sub */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                   <Ico />
-                  <span
-                    style={{
-                      fontFamily: 'var(--mono)',
-                      fontSize: 11,
-                      color: '#444',
-                      letterSpacing: '.16em',
-                    }}
-                  >
-                    0{i + 1}
-                  </span>
-                </div>
-                <div>
-                  <div
-                    style={{
-                      fontFamily: 'var(--head-font)',
-                      fontWeight: 800,
-                      fontSize: 24,
-                      letterSpacing: '.02em',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    {s.name}
-                  </div>
-                  <div
-                    className="muted"
-                    style={{
-                      fontSize: 12,
-                      letterSpacing: '.18em',
-                      textTransform: 'uppercase',
-                      marginTop: 4,
-                      fontFamily: 'var(--mono)',
-                    }}
-                  >
-                    {s.sub}
+                  <div>
+                    <div
+                      style={{
+                        fontFamily: 'var(--head-font)',
+                        fontWeight: 800,
+                        fontSize: 'clamp(20px,2.4vw,32px)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '.02em',
+                        lineHeight: 1,
+                      }}
+                    >
+                      {s.name}
+                    </div>
+                    <div
+                      className="muted"
+                      style={{
+                        fontFamily: 'var(--mono)',
+                        fontSize: 10,
+                        letterSpacing: '.18em',
+                        textTransform: 'uppercase',
+                        marginTop: 5,
+                      }}
+                    >
+                      {s.sub}
+                    </div>
                   </div>
                 </div>
-                <p className="muted" style={{ fontSize: 14, lineHeight: 1.55, marginTop: 'auto' }}>
+
+                {/* Description */}
+                <p
+                  className="muted svc-desc"
+                  style={{ fontSize: 14, lineHeight: 1.55, margin: 0 }}
+                >
                   {s.desc}
                 </p>
+
+                {/* Arrow */}
                 <div
-                  className="svc-bar"
+                  className="svc-arrow"
                   style={{
-                    position: 'absolute',
-                    left: 0,
-                    top: 0,
-                    bottom: 0,
-                    width: 2,
-                    background: 'var(--gold)',
-                    transform: 'scaleY(0)',
-                    transformOrigin: 'top',
-                    transition: 'transform .25s ease',
+                    color: 'var(--gold)',
+                    opacity: 0,
+                    transition: 'opacity .2s, transform .2s',
+                    display: 'flex',
+                    alignItems: 'center',
                   }}
-                />
+                >
+                  <IconArrow rot={-90} />
+                </div>
               </div>
             );
           })}
@@ -120,18 +122,14 @@ export default function ServicesStrip() {
       </div>
 
       <style>{`
-        @media (max-width: 1100px) {
-          .svc-grid { grid-template-columns: repeat(3,1fr) !important; }
-          .svc-grid > div:nth-child(4) { border-left: none; border-top: 1px solid var(--line); }
-          .svc-grid > div:nth-child(5) { border-top: 1px solid var(--line); }
+        .svc-row:hover { background: var(--surface); padding-left: 16px; padding-right: 16px; margin-left: -16px; margin-right: -16px; }
+        .svc-row:hover .svc-arrow { opacity: 1 !important; transform: translateX(4px); }
+        .svc-row:hover .svc-index { color: var(--gold) !important; }
+        @media (max-width: 760px) {
+          .svc-row { grid-template-columns: 40px 1fr !important; gap: 0 16px !important; }
+          .svc-desc { display: none; }
+          .svc-arrow { display: none; }
         }
-        @media (max-width: 680px) {
-          .svc-grid { grid-template-columns: 1fr !important; }
-          .svc-grid > div { border-left: none !important; border-top: 1px solid var(--line); }
-          .svc-grid > div:first-child { border-top: none; }
-        }
-        .svc-card:hover { background: #1e1e1e; }
-        .svc-card:hover .svc-bar { transform: scaleY(1) !important; }
       `}</style>
     </section>
   );

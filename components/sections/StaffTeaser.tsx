@@ -12,7 +12,7 @@ export default function StaffTeaser() {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'flex-end',
-            marginBottom: 48,
+            marginBottom: 56,
             gap: 24,
             flexWrap: 'wrap',
           }}
@@ -29,7 +29,7 @@ export default function StaffTeaser() {
         </div>
 
         <div
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 2 }}
           className="staff-grid"
         >
           {TRAINERS.slice(0, 3).map((t, i) => (
@@ -38,37 +38,53 @@ export default function StaffTeaser() {
               style={{
                 position: 'relative',
                 background: 'var(--surface)',
-                border: '1px solid var(--line)',
+                overflow: 'hidden',
               }}
+              className="staff-card"
             >
-              <Photo h={420} label={`STAFF · ${t.name.toUpperCase()}`} />
-              <div style={{ padding: '24px 22px', borderTop: '2px solid var(--gold)' }}>
+              <Photo h={460} label={`STAFF · ${t.name.toUpperCase()}`} />
+
+              {/* Info overlay at bottom */}
+              <div
+                style={{
+                  padding: '20px 22px 22px',
+                  borderTop: '3px solid var(--gold)',
+                  background: '#111',
+                }}
+              >
                 <div
                   className="muted"
                   style={{
                     fontFamily: 'var(--mono)',
-                    fontSize: 11,
-                    letterSpacing: '.18em',
+                    fontSize: 10,
+                    letterSpacing: '.2em',
                     textTransform: 'uppercase',
-                    marginBottom: 8,
+                    marginBottom: 6,
                   }}
                 >
-                  0{i + 1} · Coach
+                  0{i + 1}
                 </div>
                 <div
                   style={{
                     fontFamily: 'var(--head-font)',
                     fontWeight: 800,
-                    fontSize: 28,
+                    fontSize: 26,
                     textTransform: 'uppercase',
                     letterSpacing: '.02em',
+                    lineHeight: 1,
                   }}
                 >
                   {t.name}
                 </div>
                 <div
                   className="gold"
-                  style={{ fontSize: 13, marginTop: 6, fontFamily: 'var(--mono)', letterSpacing: '.08em' }}
+                  style={{
+                    fontSize: 11,
+                    marginTop: 6,
+                    fontFamily: 'var(--mono)',
+                    letterSpacing: '.12em',
+                    textTransform: 'uppercase',
+                  }}
                 >
                   {t.role}
                 </div>
@@ -78,7 +94,11 @@ export default function StaffTeaser() {
         </div>
       </div>
 
-      <style>{`@media (max-width: 880px) { .staff-grid { grid-template-columns: 1fr !important; } }`}</style>
+      <style>{`
+        @media (max-width: 880px) { .staff-grid { grid-template-columns: 1fr !important; gap: 2px !important; } }
+        .staff-card { transition: filter .2s; }
+        .staff-card:hover { filter: brightness(1.06); }
+      `}</style>
     </section>
   );
 }

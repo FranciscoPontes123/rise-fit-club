@@ -13,7 +13,7 @@
   --muted:     #A0A0A0;
 
   --head-font: var(--font-barlow-condensed), sans-serif;
-  --body-font: var(--font-inter), sans-serif;
+  --body-font: var(--font-syne), sans-serif;
   --mono:      var(--font-jetbrains-mono), monospace;
 }
 
@@ -108,7 +108,7 @@ input, select, textarea { font-family: var(--body-font); }
   color: #0d0d0d;
   border-color: var(--gold);
 }
-.btn-gold:hover { background: #dab859; border-color: #dab859; }
+.btn-gold:hover { background: #dab859; border-color: #dab859; box-shadow: 0 8px 28px rgba(201,168,76,.28); }
 
 .btn-ghost {
   background: transparent;
@@ -215,6 +215,19 @@ input, select, textarea { font-family: var(--body-font); }
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--red);
+}
+
+/* ─── Decorative section counter ───────────────── */
+.sect-num {
+  font-family: var(--head-font);
+  font-size: clamp(120px, 18vw, 220px);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px #242424;
+  line-height: 0.85;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -.02em;
 }
 
 /* ─── Page enter animation ──────────────────────── */
