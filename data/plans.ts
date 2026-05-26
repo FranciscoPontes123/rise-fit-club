@@ -11,7 +11,7 @@ export const PLANS = [
       'Domingos · fechado',
     ],
     perks: [
-      { t: 'Treino Livre — piso principal', y: true },
+      { t: 'Treino Livre', y: true },
       { t: 'Acesso à app Danalock', y: true },
       { t: 'Acesso 24h / 7 dias', y: false },
     ],
@@ -28,7 +28,7 @@ export const PLANS = [
       'Feriados incluídos',
     ],
     perks: [
-      { t: 'Treino Livre — piso principal', y: true },
+      { t: 'Treino Livre', y: true },
       { t: 'Acesso à app Danalock', y: true },
       { t: 'Acesso 24h / 7 dias', y: false },
     ],
@@ -45,7 +45,7 @@ export const PLANS = [
       'Sem janela horária',
     ],
     perks: [
-      { t: 'Treino Livre — piso principal', y: true },
+      { t: 'Treino Livre', y: true },
       { t: 'Acesso à app Danalock', y: true },
       { t: 'Acesso 24h / 7 dias', y: true },
     ],
