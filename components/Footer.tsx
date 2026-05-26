@@ -130,6 +130,7 @@ export default function Footer() {
               <li>Aulas de Grupo</li>
               <li>Pilates Clínico</li>
               <li>Jiu Jitsu</li>
+              <li>Fit Boxe</li>
             </ul>
           </div>
 
