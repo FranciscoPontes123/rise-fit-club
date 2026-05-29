@@ -225,7 +225,11 @@ export default function Footer() {
               color: '#333',
             }}
           >
-            Privacidade · Termos · Cookies
+            <Link href="/privacidade" className="foot-link" style={{ color: '#333', fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase', fontFamily: 'var(--mono)' }}>Privacidade</Link>
+            {' · '}
+            <Link href="/termos" className="foot-link" style={{ color: '#333', fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase', fontFamily: 'var(--mono)' }}>Termos</Link>
+            {' · '}
+            <Link href="/cookies" className="foot-link" style={{ color: '#333', fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase', fontFamily: 'var(--mono)' }}>Cookies</Link>
           </div>
         </div>
       </div>
