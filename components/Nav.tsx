@@ -63,19 +63,18 @@ export default function Nav() {
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 74 }}>
         {/* Logo */}
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <RiseLogo size={40} />
+          <RiseLogo size={36} />
           <span
             style={{
               fontFamily: 'var(--head-font)',
               fontWeight: 900,
-              letterSpacing: '.08em',
-              fontSize: 16,
+              letterSpacing: '.18em',
+              fontSize: 15,
+              color: '#f0ece4',
               lineHeight: 1,
             }}
           >
-            RISE
-            <br />
-            <span style={{ color: 'var(--gold)', fontSize: 10, letterSpacing: '.32em' }}>FIT · CLUB</span>
+            RISE FIT CLUB
           </span>
         </Link>
 
