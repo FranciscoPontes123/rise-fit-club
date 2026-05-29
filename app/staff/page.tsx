@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import { TRAINERS } from '@/data/trainers';
+import { IconArrow } from '@/components/icons';
 
 export const metadata: Metadata = {
   title: 'Staff — Rise Fit Club',
@@ -82,6 +84,23 @@ export default function StaffPage() {
             @media (max-width: 880px) { .staff-grid { grid-template-columns: 1fr 1fr !important; } }
             @media (max-width: 560px) { .staff-grid { grid-template-columns: 1fr !important; } }
           `}</style>
+        </div>
+      </section>
+
+      {/* Recrutamento CTA */}
+      <section style={{ background: '#0d0d0d', borderTop: '2px solid var(--gold)', padding: '80px 0' }}>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 32 }}>
+          <div>
+            <h2 style={{ fontSize: 'clamp(36px,5vw,72px)', lineHeight: 0.9 }}>
+              Queres juntar-te à<br /><span className="gold">Rise Team</span>?
+            </h2>
+            <p className="muted" style={{ marginTop: 16, fontSize: 16, maxWidth: 400, lineHeight: 1.6 }}>
+              Estamos sempre abertos a novos talentos. Candidata-te ou propõe um modelo de parceria.
+            </p>
+          </div>
+          <Link href="/recrutamento" className="btn btn-gold" style={{ fontSize: 17, padding: '18px 36px' }}>
+            Ver oportunidades <IconArrow rot={-90} />
+          </Link>
         </div>
       </section>
     </div>
