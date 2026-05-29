@@ -120,30 +120,6 @@ export default function ContactoPage() {
                 </div>
               </div>
 
-              {/* Horário */}
-              <div
-                style={{
-                  padding: '24px 24px',
-                  background: 'var(--surface)',
-                  border: '1px solid var(--line)',
-                }}
-              >
-                <div className="eyebrow" style={{ marginBottom: 14 }}>— Horário</div>
-                <div style={{ fontFamily: 'var(--mono)', fontSize: 13, lineHeight: 1.9 }}>
-                  <div>
-                    <span className="gold">SEG–SEX</span>&nbsp;&nbsp;06:00 — 24:00
-                  </div>
-                  <div>
-                    <span className="gold">SÁB–DOM</span>&nbsp;&nbsp;07:00 — 22:00
-                  </div>
-                  <div
-                    className="muted"
-                    style={{ marginTop: 6, fontSize: 11, letterSpacing: '.16em', textTransform: 'uppercase' }}
-                  >
-                    ACESSO 24H · PLANO AVANÇADO
-                  </div>
-                </div>
-              </div>
             </aside>
           </div>
 
