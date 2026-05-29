@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { PLANS } from '@/data/plans';
-import { IconCheck, IconClock, IconArrow, IconPerson, IconGroup } from '@/components/icons';
+import Image from 'next/image';
+import { IconArrow, IconPerson, IconGroup, IconCheck } from '@/components/icons';
 import Magnet from '@/components/ui/Magnet';
-import SpotlightCard from '@/components/ui/SpotlightCard';
 
 export const metadata: Metadata = {
   title: 'Planos — Rise Fit Club',
@@ -120,160 +119,102 @@ export default function PlanosPage() {
         </div>
       </section>
 
-      {/* 2 — Pack Verão destaque */}
-      <section style={{
-        background: 'linear-gradient(135deg, #1a1200 0%, #0d0d0d 60%)',
-        borderTop: '2px solid var(--gold)',
-        borderBottom: '1px solid #2a2000',
-        padding: '72px 0',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
-        <div aria-hidden style={{
-          position: 'absolute', right: -20, top: '50%', transform: 'translateY(-50%)',
-          fontFamily: 'var(--head-font)', fontWeight: 900, fontSize: 'clamp(120px,18vw,260px)',
-          color: 'transparent', WebkitTextStroke: '1px #1e1500', lineHeight: 1,
-          pointerEvents: 'none', userSelect: 'none',
-        }}>VERÃO</div>
-
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 40, flexWrap: 'wrap' }}>
-            <span style={{
-              background: 'var(--gold)', color: '#0d0d0d',
-              fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.22em',
-              textTransform: 'uppercase', padding: '5px 14px', fontWeight: 700,
-            }}>★ Edição Limitada</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '.16em', color: '#666', textTransform: 'uppercase' }}>
-              — Campanha de Verão · Pack Mensal 35€
-            </span>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }} className="campaign-grid">
-            <div>
-              <h2 style={{ fontSize: 'clamp(40px,6vw,88px)', lineHeight: 0.9, marginBottom: 24 }}>
-                Pack <span className="gold">Verão</span>.
-              </h2>
-              {/* A oferta */}
-              <div style={{
-                padding: '24px 28px',
-                background: 'rgba(201,168,76,.08)',
-                border: '1px solid rgba(201,168,76,.3)',
-                marginBottom: 28,
-              }}>
-                <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.22em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 10 }}>A oferta</div>
-                <div style={{ fontFamily: 'var(--head-font)', fontWeight: 900, fontSize: 'clamp(20px,2.5vw,30px)', lineHeight: 1.15 }}>
-                  Paga Junho e Julho —<br />
-                  <span className="gold">Agosto fica grátis.</span>
-                </div>
-              </div>
-              <p className="muted" style={{ fontSize: 15, lineHeight: 1.6, maxWidth: 380, marginBottom: 32 }}>
-                Sem restrição de horário. Edição limitada, disponível por tempo limitado.
-              </p>
-              <Magnet>
-                <Link href="/contacto?plano=verao" className="btn btn-gold" style={{ fontSize: 17, padding: '18px 36px' }}>
-                  Quero o Pack Verão <IconArrow rot={-90} />
-                </Link>
-              </Magnet>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 8 }}>
-                <span style={{ fontFamily: 'var(--head-font)', fontWeight: 900, fontSize: 'clamp(80px,10vw,130px)', lineHeight: 0.85, color: 'var(--gold)' }}>35</span>
-                <div>
-                  <div style={{ fontFamily: 'var(--mono)', fontSize: 18, color: '#ccc' }}>€ / mês</div>
-                  <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.18em', color: '#666', textTransform: 'uppercase', marginTop: 4 }}>Sem fidelização</div>
-                </div>
-              </div>
-              {['Sem restrição de horário', 'Avaliação Física Premium', 'Plano de Treino Individual', 'Aconselhamento Nutricional'].map((p, i) => (
-                <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'center', fontSize: 15, color: '#d0d0d0' }}>
-                  <IconCheck /> {p}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <style>{`@media (max-width: 760px) { .campaign-grid { grid-template-columns: 1fr !important; gap: 40px !important; } }`}</style>
-      </section>
-
-      {/* 3 — Grelha 3 packs */}
-      <section className="page">
+      {/* 2 — Packs gallery */}
+      <section className="page" style={{ background: '#080806', borderTop: '1px solid var(--line)' }}>
         <div className="container">
-          <div className="eyebrow" style={{ marginBottom: 14 }}>— Planos de Acesso</div>
-          <h2 style={{ fontSize: 'clamp(40px,5vw,72px)', marginBottom: 48 }}>
-            Escolhe o teu <span className="gold">plano</span>.
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20, alignItems: 'stretch' }} className="plan-grid">
-            {PLANS.map((p) => (
-              <SpotlightCard
-                key={p.id}
-                spotlightColor={p.featured ? 'rgba(201,168,76,0.16)' : 'rgba(201,168,76,0.07)'}
+          <div className="eyebrow" style={{ marginBottom: 14 }}>— Os nossos Packs</div>
+          <div style={{
+            display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
+            flexWrap: 'wrap', gap: 24, marginBottom: 56,
+          }}>
+            <h2 style={{ fontSize: 'clamp(40px,6vw,96px)', lineHeight: 0.9 }}>
+              Os nossos <span className="gold">packs</span>.
+            </h2>
+            <p className="muted" style={{ fontSize: 15, maxWidth: 360, lineHeight: 1.6 }}>
+              Cada pack foi pensado para um ritmo de vida diferente.<br />
+              Sem contratos, sem letras pequenas.
+            </p>
+          </div>
+
+          <div className="packs-grid" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: 20,
+            alignItems: 'start',
+          }}>
+            {([
+              { src: '/Pack Hora de Almoço.jpeg',        alt: 'Pack Hora de Almoço — 27€/mês',           stagger: false, featured: false },
+              { src: '/Pack Base.jpeg',                  alt: 'Pack Mensal Base — 35€/mês',              stagger: true,  featured: false },
+              { src: '/Pack Treino Personalizado.jpeg',  alt: 'Treino Personalizado — desde 40€/mês',    stagger: false, featured: false },
+              { src: '/Pack Campanha Verão.jpeg',        alt: 'Campanha de Verão — Edição Limitada',     stagger: true,  featured: true  },
+            ] as const).map((pack, i) => (
+              <div
+                key={i}
+                className="pack-card"
                 style={{
                   position: 'relative',
-                  background: p.featured ? '#181410' : 'var(--surface)',
-                  border: p.featured ? '2px solid var(--gold)' : '1px solid var(--line)',
-                  padding: '40px 32px 32px',
-                  display: 'flex', flexDirection: 'column', gap: 24,
-                  transform: 'none',
-                  boxShadow: p.featured ? '0 0 0 0 transparent' : 'none',
+                  overflow: 'hidden',
+                  border: pack.featured ? '2px solid var(--gold)' : '1px solid rgba(255,255,255,0.08)',
+                  marginTop: pack.stagger ? 40 : 0,
+                  background: '#0d0d0d',
                 }}
               >
-                {p.campaign && (
+                {pack.featured && (
                   <div style={{
-                    position: 'absolute', top: -1, left: 20,
+                    position: 'absolute', top: 14, left: 0, zIndex: 10,
                     background: 'var(--gold)', color: '#0d0d0d',
                     fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '.22em',
-                    textTransform: 'uppercase', padding: '4px 12px', fontWeight: 700,
+                    textTransform: 'uppercase', padding: '5px 14px', fontWeight: 700,
                   }}>★ Edição Limitada</div>
                 )}
-                <div>
-                  <div className="muted" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '.2em', textTransform: 'uppercase' }}>
-                    {p.kicker}
-                  </div>
-                  <div style={{ fontFamily: 'var(--head-font)', fontWeight: 900, fontSize: 36, textTransform: 'uppercase', lineHeight: 1, marginTop: 6 }}>
-                    {p.name}
-                  </div>
+                <div className="pack-img-wrap" style={{ overflow: 'hidden' }}>
+                  <Image
+                    src={pack.src}
+                    alt={pack.alt}
+                    width={600}
+                    height={800}
+                    style={{ width: '100%', height: 'auto', display: 'block' }}
+                  />
                 </div>
-
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
-                  <span className="muted" style={{ fontSize: 16 }}>€</span>
-                  <span style={{
-                    fontFamily: 'var(--head-font)', fontWeight: 900,
-                    fontSize: 80, lineHeight: 0.9,
-                    color: p.featured ? 'var(--gold)' : '#fff',
-                  }}>{p.price}</span>
-                  <span className="muted" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '.16em', textTransform: 'uppercase' }}>/ mês</span>
-                </div>
-
-                <div style={{ display: 'flex', gap: 10, alignItems: 'center', padding: '12px 14px', background: p.featured ? 'rgba(201,168,76,.08)' : '#111', border: '1px solid var(--line)' }}>
-                  <IconClock />
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 12, color: p.featured ? 'var(--gold)' : '#888' }}>{p.access}</span>
-                </div>
-
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
-                  {p.perks.map((perk, j) => (
-                    <li key={j} style={{ display: 'flex', gap: 10, fontSize: 14, color: '#d0d0d0' }}>
-                      <IconCheck /> <span>{perk}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Magnet style={{ marginTop: 'auto' }}>
-                  <Link href={`/contacto?plano=${p.id}`} className={p.featured ? 'btn btn-gold' : 'btn btn-outline-gold'} style={{ justifyContent: 'center', width: '100%' }}>
-                    Quero este plano <IconArrow rot={-90} />
-                  </Link>
-                </Magnet>
-              </SpotlightCard>
+              </div>
             ))}
           </div>
 
-
-          <style>{`
-            @media (max-width: 980px) {
-              .plan-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
-              .plan-grid > * { transform: none !important; }
-            }
-          `}</style>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 64 }}>
+            <Magnet>
+              <Link href="/contacto" className="btn btn-gold" style={{ fontSize: 16, padding: '16px 44px' }}>
+                Falar com a equipa <IconArrow rot={-90} />
+              </Link>
+            </Magnet>
+          </div>
         </div>
+
+        <style>{`
+          .pack-card {
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94),
+                        box-shadow 0.4s ease,
+                        border-color 0.4s ease;
+          }
+          .pack-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold) !important;
+            box-shadow: 0 32px 64px rgba(0,0,0,0.7), 0 0 28px rgba(201,168,76,0.14);
+          }
+          .pack-card .pack-img-wrap img {
+            transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+          }
+          .pack-card:hover .pack-img-wrap img {
+            transform: scale(1.04);
+          }
+          @media (max-width: 880px) {
+            .packs-grid { grid-template-columns: 1fr 1fr !important; }
+            .pack-card { margin-top: 0 !important; }
+          }
+          @media (max-width: 520px) {
+            .packs-grid { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
       </section>
     </div>
   );

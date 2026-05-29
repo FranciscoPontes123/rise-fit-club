@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { IconArrow } from '@/components/icons';
+import { client } from '@/sanity/lib/client';
+import { SCHEDULE_QUERY } from '@/sanity/queries';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Aulas de Grupo — Rise Fit Club',
@@ -8,54 +12,7 @@ export const metadata: Metadata = {
 };
 
 type ClassEntry = { time: string; name: string; restricted?: boolean; sub?: string };
-
-const SCHEDULE: { day: string; classes: ClassEntry[] }[] = [
-  {
-    day: 'Segunda',
-    classes: [
-      { time: '10:30', name: 'Yoga' },
-      { time: '18:30', name: 'Circuito' },
-      { time: '19:15', name: 'Jiu-Jitsu Kids', restricted: true },
-      { time: '20:00', name: 'Jiu-Jitsu Adultos', restricted: true, sub: 'Kimono' },
-    ],
-  },
-  {
-    day: 'Terça',
-    classes: [
-      { time: '11:00', name: 'Circuito Gym', restricted: true },
-      { time: '12:00', name: 'Jiu-Jitsu Adultos', restricted: true, sub: 'No-Gi' },
-      { time: '18:00', name: 'Pilates' },
-      { time: '18:45', name: 'HIIT' },
-      { time: '19:20', name: 'Fit Boxe' },
-    ],
-  },
-  {
-    day: 'Quarta',
-    classes: [
-      { time: '10:40', name: 'Ginástica Sénior' },
-      { time: '19:15', name: 'Jiu-Jitsu Kids', restricted: true },
-      { time: '20:00', name: 'Jiu-Jitsu Adultos', restricted: true, sub: 'Kimono' },
-    ],
-  },
-  {
-    day: 'Quinta',
-    classes: [
-      { time: '12:00', name: 'Jiu-Jitsu Adultos', restricted: true, sub: 'No-Gi' },
-      { time: '18:00', name: 'Fit Boxe', restricted: true, sub: 'Small Group' },
-      { time: '18:30', name: 'Pilates' },
-      { time: '19:15', name: 'GAP' },
-      { time: '20:40', name: 'Fit Boxe', restricted: true, sub: 'Small Group' },
-    ],
-  },
-  {
-    day: 'Sexta',
-    classes: [
-      { time: '10:40', name: 'Ginástica Sénior' },
-      { time: '19:15', name: 'Jiu-Jitsu Kids', restricted: true },
-      { time: '20:00', name: 'Jiu-Jitsu Adultos', restricted: true, sub: 'Kimono' },
-    ],
-  },
-];
+type DayEntry = { day: string; classes: ClassEntry[] };
 
 const MODALITIES = [
   { name: 'Yoga', days: 'Segunda' },
@@ -70,7 +27,10 @@ const MODALITIES = [
   { name: 'Defesa Pessoal / Boxe', days: 'Aulas Particulares' },
 ];
 
-export default function AulasPage() {
+export default async function AulasPage() {
+  const data = await client.fetch<{ days: DayEntry[] } | null>(SCHEDULE_QUERY);
+  const SCHEDULE: DayEntry[] = data?.days ?? [];
+
   return (
     <div className="page-enter">
       {/* Hero */}
@@ -90,91 +50,107 @@ export default function AulasPage() {
       <section style={{ background: '#0a0a0a', borderTop: '1px solid var(--line)', paddingBottom: 100 }}>
         <div className="container" style={{ paddingTop: 60 }}>
 
-          {/* Desktop table */}
-          <div className="sched-table" style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
-              <thead>
-                <tr>
-                  {SCHEDULE.map((col) => (
-                    <th key={col.day} style={{
-                      padding: '20px 16px',
-                      background: 'var(--gold)',
-                      color: '#0d0d0d',
-                      fontFamily: 'var(--head-font)',
-                      fontWeight: 900,
-                      fontSize: 18,
-                      textTransform: 'uppercase',
-                      letterSpacing: '.06em',
-                      textAlign: 'center',
-                      border: '2px solid #0a0a0a',
-                    }}>
-                      {col.day}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {Array.from({ length: Math.max(...SCHEDULE.map((c) => c.classes.length)) }).map((_, rowIdx) => (
-                  <tr key={rowIdx}>
-                    {SCHEDULE.map((col) => {
-                      const cls = col.classes[rowIdx];
-                      if (!cls) return <td key={col.day} style={{ border: '1px solid #111', background: '#0a0a0a' }} />;
-                      return (
-                        <td key={col.day} style={{
-                          padding: '18px 16px',
-                          border: '1px solid #161616',
-                          background: cls.restricted ? '#0f0f0f' : '#111',
-                          verticalAlign: 'top',
+          {SCHEDULE.length === 0 ? (
+            <div style={{
+              padding: '80px 0',
+              textAlign: 'center',
+              fontFamily: 'var(--mono)',
+              fontSize: 13,
+              color: '#555',
+              letterSpacing: '.16em',
+              textTransform: 'uppercase',
+            }}>
+              Horário em atualização — volta em breve.
+            </div>
+          ) : (
+            <>
+              {/* Desktop table */}
+              <div className="sched-table" style={{ overflowX: 'auto' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
+                  <thead>
+                    <tr>
+                      {SCHEDULE.map((col) => (
+                        <th key={col.day} style={{
+                          padding: '20px 16px',
+                          background: 'var(--gold)',
+                          color: '#0d0d0d',
+                          fontFamily: 'var(--head-font)',
+                          fontWeight: 900,
+                          fontSize: 18,
+                          textTransform: 'uppercase',
+                          letterSpacing: '.06em',
+                          textAlign: 'center',
+                          border: '2px solid #0a0a0a',
                         }}>
-                          <div style={{
-                            fontFamily: 'var(--mono)',
-                            fontSize: 13,
-                            color: 'var(--gold)',
-                            letterSpacing: '.08em',
-                            marginBottom: 6,
-                          }}>
-                            {cls.time}
-                          </div>
-                          <div style={{
-                            fontFamily: 'var(--head-font)',
-                            fontWeight: 800,
-                            fontSize: 16,
-                            textTransform: 'uppercase',
-                            color: cls.restricted ? '#999' : '#fff',
-                            lineHeight: 1.1,
-                          }}>
-                            {cls.restricted && <span style={{ color: 'var(--gold)', marginRight: 2 }}>*</span>}
-                            {cls.name}
-                          </div>
-                          {cls.sub && (
-                            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#555', letterSpacing: '.14em', textTransform: 'uppercase', marginTop: 4 }}>
-                              {cls.sub}
-                            </div>
-                          )}
-                        </td>
-                      );
-                    })}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                          {col.day}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Array.from({ length: Math.max(...SCHEDULE.map((c) => c.classes.length)) }).map((_, rowIdx) => (
+                      <tr key={rowIdx}>
+                        {SCHEDULE.map((col) => {
+                          const cls = col.classes[rowIdx];
+                          if (!cls) return <td key={col.day} style={{ border: '1px solid #111', background: '#0a0a0a' }} />;
+                          return (
+                            <td key={col.day} style={{
+                              padding: '18px 16px',
+                              border: '1px solid #161616',
+                              background: cls.restricted ? '#0f0f0f' : '#111',
+                              verticalAlign: 'top',
+                            }}>
+                              <div style={{
+                                fontFamily: 'var(--mono)',
+                                fontSize: 13,
+                                color: 'var(--gold)',
+                                letterSpacing: '.08em',
+                                marginBottom: 6,
+                              }}>
+                                {cls.time}
+                              </div>
+                              <div style={{
+                                fontFamily: 'var(--head-font)',
+                                fontWeight: 800,
+                                fontSize: 16,
+                                textTransform: 'uppercase',
+                                color: cls.restricted ? '#999' : '#fff',
+                                lineHeight: 1.1,
+                              }}>
+                                {cls.restricted && <span style={{ color: 'var(--gold)', marginRight: 2 }}>*</span>}
+                                {cls.name}
+                              </div>
+                              {cls.sub && (
+                                <div style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#555', letterSpacing: '.14em', textTransform: 'uppercase', marginTop: 4 }}>
+                                  {cls.sub}
+                                </div>
+                              )}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
 
-          {/* Footnote */}
-          <div style={{
-            marginTop: 24,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 10,
-            fontFamily: 'var(--mono)',
-            fontSize: 11,
-            color: '#555',
-            letterSpacing: '.14em',
-            textTransform: 'uppercase',
-          }}>
-            <span style={{ color: 'var(--gold)', fontSize: 14 }}>*</span>
-            Aulas assinaladas não incluídas no regime de livre trânsito — inscrição obrigatória.
-          </div>
+              {/* Footnote */}
+              <div style={{
+                marginTop: 24,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 10,
+                fontFamily: 'var(--mono)',
+                fontSize: 11,
+                color: '#555',
+                letterSpacing: '.14em',
+                textTransform: 'uppercase',
+              }}>
+                <span style={{ color: 'var(--gold)', fontSize: 14 }}>*</span>
+                Aulas assinaladas não incluídas no regime de livre trânsito — inscrição obrigatória.
+              </div>
+            </>
+          )}
         </div>
       </section>
 
