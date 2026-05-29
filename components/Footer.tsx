@@ -158,7 +158,14 @@ export default function Footer() {
             >
               <li style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                 <IconPhone />
-                <span style={{ color: '#666' }}>+351 963 329 814</span>
+                <a
+                  href="https://wa.me/351963329814"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#666', fontSize: 12 }}
+                >
+                  +351 963 329 814
+                </a>
               </li>
               <li style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                 <IconEmail />
