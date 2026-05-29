@@ -48,7 +48,7 @@ export default function TermosPage() {
                 <li>MBWay</li>
                 <li>Numerário</li>
               </ul>
-              <p>O pagamento é efetuado mensalmente, até ao dia 8 de cada mês. O não pagamento dentro do prazo pode resultar na suspensão do acesso.</p>
+              <p>O pagamento é efetuado mensalmente, até ao dia 2 de cada mês. O não pagamento dentro do prazo pode resultar na suspensão do acesso.</p>
             </Block>
 
             <Block title="5. Cancelamento">
