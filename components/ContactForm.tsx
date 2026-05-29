@@ -112,16 +112,14 @@ export default function ContactForm() {
             <option value="base">Pack Base — 27€/mês · Horário restrito</option>
             <option value="inter">Pack Intermédio — 35€/mês · Sem restrição de horário</option>
             <option value="verao">★ Pack Verão — Paga Jun + Jul, Agosto grátis</option>
-            <option value="pt-acesso">Treino Personalizado — desde 40€/mês</option>
           </optgroup>
-          <optgroup label="Serviços de acompanhamento">
+          <optgroup label="Treino Personalizado — Desde 40€/mês">
             <option value="pt-individual">Treino Individual (PT)</option>
             <option value="pt-duo">Treino Duo</option>
             <option value="pt-small-group">Small Group Training</option>
             <option value="online">Acompanhamento Online</option>
             <option value="sala">Acompanhamento em Sala</option>
           </optgroup>
-          <option value="exp">Avaliação gratuita</option>
         </select>
         {errs.plano && <span className="err-msg">{errs.plano}</span>}
       </div>
