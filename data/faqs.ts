@@ -1,7 +1,7 @@
 export const FAQS = [
   {
     q: 'Como funciona o acesso ao ginásio?',
-    a: 'O acesso é feito através da app Danalock — sem chaves, sem cartões. Recebes acesso assim que o teu plano fica ativo, e podes entrar dentro da janela horária do teu plano (ou 24h, no Avançado).',
+    a: 'O acesso é feito de forma digital — sem chaves, sem cartões. Recebes acesso assim que o teu plano fica ativo, e podes entrar dentro da janela horária do teu plano (ou sem restrições de horário, no Intermédio e Treino Personalizado).',
   },
   {
     q: 'Como me posso inscrever?',
@@ -9,11 +9,11 @@ export const FAQS = [
   },
   {
     q: 'Qual é a política de cancelamento?',
-    a: 'Sem fidelização anual. Pedimos que o pedido de cancelamento seja efetuado até ao dia 8 de cada mês, por questões de contabilidade.',
+    a: 'Sem fidelização anual. Pedimos que o pedido de cancelamento seja efetuado até ao dia 15 de cada mês, por questões de contabilidade.',
   },
   {
     q: 'Há estacionamento?',
-    a: 'O Rise Fit Club não tem estacionamento exclusivo, porém encontra-se numa rua principal com muitos lugares de estacionamento gratuitos.',
+    a: 'O Rise Fit Club encontra-se numa zona com imensos lugares de estacionamento gratuitos.',
   },
   {
     q: 'Que métodos de pagamento são aceites?',
@@ -29,10 +29,10 @@ export const FAQS = [
   },
   {
     q: 'O ginásio funciona em feriados?',
-    a: 'Sim — os planos Intermédio e Avançado incluem feriados. O plano Base segue o horário regular (Seg–Sex / Sáb), e fica fechado em feriados nacionais.',
+    a: 'Sim — o Rise Fit Club funciona todos os dias, incluindo feriados.',
   },
   {
     q: 'Se eu escolher um plano personalizado, tenho acesso ao ginásio em que horários?',
-    a: 'Ao escolher um dos planos personalizados, é-lhe associado ainda o plano avançado, tendo assim acesso ao ginásio 24/7, mesmo em feriados.',
+    a: 'Ao escolher um plano de Treino Personalizado, fica automaticamente associado acesso sem restrições de horário ao ginásio, incluindo feriados.',
   },
 ];

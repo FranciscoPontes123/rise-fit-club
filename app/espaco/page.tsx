@@ -19,11 +19,7 @@ const GALLERY = [
 const HIGHLIGHTS = [
   {
     title: 'Espaço',
-    items: ['2 Salas de Exercício', '1 Sala para Aulas de Grupo', 'Mais de 1.5 Toneladas de carga'],
-  },
-  {
-    title: 'Aparelhos',
-    items: ['8 Aparelhos para treinos de Costas', '8 Máquinas para exercícios de Peito', '11 Aparelhos para treino de Pernas'],
+    items: ['2 Salas de Exercício', '1 Sala para Aulas de Grupo', 'Um Gabinete de Avaliações', 'Dois Balneários', 'Mais de 1.5 Toneladas de carga'],
   },
   {
     title: 'Zona Cardio',
@@ -31,7 +27,7 @@ const HIGHLIGHTS = [
   },
   {
     title: 'Aulas de Grupo',
-    items: ['Programação Semanal', 'Pilates', 'Jiu Jitsu'],
+    items: ['Pilates', 'GAP', 'Circuito', 'HIIT', 'Localizada', 'Fit Boxe', 'Yoga'],
   },
 ];
 
@@ -46,8 +42,7 @@ export default function EspacoPage() {
             O sítio onde o trabalho <span className="gold">acontece</span>.
           </h1>
           <p className="muted" style={{ fontSize: 18, maxWidth: 640, marginTop: 24, lineHeight: 1.6 }}>
-            3 espaços especializados para treino individual ou em grupo. Equipamento
-            funcional de topo, escolhido à medida para ti.
+            2 espaços especializados para treino individual ou em grupo. Equipamento de topo, escolhido à medida para ti.
           </p>
         </div>
       </section>
@@ -95,7 +90,7 @@ export default function EspacoPage() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(4,1fr)',
+              gridTemplateColumns: 'repeat(3,1fr)',
               gap: 0,
               border: '1px solid var(--line)',
             }}
@@ -135,8 +130,7 @@ export default function EspacoPage() {
           <style>{`
             @media (max-width: 980px) {
               .hl-grid { grid-template-columns: repeat(2,1fr) !important; }
-              .hl-grid > div:nth-child(3) { border-left: none !important; border-top: 1px solid var(--line); }
-              .hl-grid > div:nth-child(4) { border-top: 1px solid var(--line); }
+              .hl-grid > div:nth-child(3) { border-top: 1px solid var(--line); border-left: none !important; }
             }
             @media (max-width: 560px) {
               .hl-grid { grid-template-columns: 1fr !important; }

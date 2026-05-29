@@ -1,5 +1,5 @@
-import Stars from '@/components/ui/Stars';
 import { REVIEWS } from '@/data/reviews';
+import { IconIG } from '@/components/icons';
 
 function ReviewCard({ r }: { r: typeof REVIEWS[number] }) {
   return (
@@ -7,65 +7,26 @@ function ReviewCard({ r }: { r: typeof REVIEWS[number] }) {
       style={{
         background: '#0f0f0f',
         borderLeft: '2px solid var(--gold)',
-        padding: '28px 28px 28px 26px',
+        padding: '32px 28px 32px 26px',
         display: 'flex',
         flexDirection: 'column',
-        gap: 18,
         width: 320,
         flexShrink: 0,
-        minHeight: 220,
+        minHeight: 180,
         scrollSnapAlign: 'start',
       }}
     >
-      <Stars value={r.stars} />
       <p
         style={{
-          fontSize: 15,
-          lineHeight: 1.6,
-          flex: 1,
-          color: '#d8d8d8',
+          fontSize: 16,
+          lineHeight: 1.65,
+          color: '#d0d0d0',
           fontFamily: 'var(--body-font)',
+          margin: 0,
         }}
       >
         &ldquo;{r.text}&rdquo;
       </p>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div
-            style={{
-              width: 30,
-              height: 30,
-              background: 'var(--gold)',
-              color: '#0d0d0d',
-              display: 'grid',
-              placeItems: 'center',
-              fontFamily: 'var(--head-font)',
-              fontWeight: 900,
-              fontSize: 14,
-              flexShrink: 0,
-            }}
-          >
-            {r.name[0]}
-          </div>
-          <div>
-            <div
-              style={{
-                fontFamily: 'var(--head-font)',
-                fontWeight: 700,
-                fontSize: 13,
-                letterSpacing: '.06em',
-                textTransform: 'uppercase',
-              }}
-            >
-              {r.name}
-            </div>
-            <div className="muted" style={{ fontSize: 10, fontFamily: 'var(--mono)', letterSpacing: '.1em' }}>
-              {r.when}
-            </div>
-          </div>
-        </div>
-        <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#333' }}>G</span>
-      </div>
     </article>
   );
 }
@@ -81,6 +42,26 @@ export default function SocialProof() {
               Feedback dos nossos <span className="gold">membros</span>.
             </h2>
           </div>
+          <a
+            href="https://www.instagram.com/rise.fitclub"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 10,
+              fontFamily: 'var(--mono)',
+              fontSize: 11,
+              letterSpacing: '.18em',
+              textTransform: 'uppercase',
+              color: '#666',
+              transition: 'color .2s',
+            }}
+            className="ig-link"
+          >
+            <IconIG />
+            Mais reviews em @rise.fitclub
+          </a>
         </div>
       </div>
 
@@ -108,6 +89,7 @@ export default function SocialProof() {
         .reviews-scroll::-webkit-scrollbar-track { background: #111; }
         .reviews-scroll::-webkit-scrollbar-thumb { background: var(--gold); }
         .reviews-scroll:active { cursor: grabbing; }
+        .ig-link:hover { color: var(--gold) !important; }
         @media (max-width: 760px) {
           .reviews-scroll { padding-left: 20px !important; }
         }

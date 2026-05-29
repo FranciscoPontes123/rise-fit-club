@@ -11,10 +11,12 @@ const NAV_ITEMS = [
   { href: '/', label: 'Início' },
   { href: '/espaco', label: 'Espaço' },
   { href: '/planos', label: 'Planos' },
+  { href: '/aulas', label: 'Aulas' },
   { href: '/staff', label: 'Staff' },
   { href: '/resultados', label: 'Resultados' },
   { href: '/contacto', label: 'Contacto' },
   { href: '/faq', label: 'FAQ' },
+  { href: '/recrutamento', label: 'Recrutamento' },
 ];
 
 export default function Nav() {

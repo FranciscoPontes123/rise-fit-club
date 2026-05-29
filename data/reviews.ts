@@ -1,38 +1,20 @@
 export const REVIEWS = [
   {
-    name: 'Tiago M.',
-    text: 'Ambiente real, sem fitas. A equipa puxa por ti e o equipamento é top. Em 4 meses, outra pessoa.',
-    stars: 5,
-    when: 'há 2 semanas',
+    text: 'Pela primeira vez sinto que para além de estar a ser verdadeiramente acompanhada, estou a ser acompanhada por alguém que entende o que está a fazer.',
   },
   {
-    name: 'Marta S.',
-    text: 'As aulas de pilates clínico foram um divisor de águas para as minhas costas. Atenção brutal ao detalhe.',
-    stars: 5,
-    when: 'há 1 mês',
+    text: 'Os treinos têm trazido sempre um novo ânimo e inspiração para a nossa semana!',
   },
   {
-    name: 'Ricardo P.',
-    text: 'Único ginásio da zona com acesso 24h sério e uma comunidade que realmente se conhece pelo nome.',
-    stars: 5,
-    when: 'há 3 semanas',
+    text: 'Se há algo que me traz satisfação em todo este processo de mudança do meu estilo de vida, é o facto de inspirar quem me rodeia.',
   },
   {
-    name: 'Ana F.',
-    text: 'Comecei do zero no jiu jitsu. O Bruno é paciente e exigente ao mesmo tempo. Sinto-me mais segura.',
-    stars: 5,
-    when: 'há 2 meses',
+    text: 'As crianças do meu Zumba kids dizem que eu estou mais musculado.',
   },
   {
-    name: 'Gonçalo R.',
-    text: 'Cancelei o meu ginásio de cadeia e não me arrependi. Aqui toda a gente sabe o teu nome.',
-    stars: 5,
-    when: 'há 1 semana',
+    text: 'A minha vida mudou para melhor em tudo, desde a minha autoestima ao ter mais energia para o dia a dia, ao ganhar o gosto pelo exercício.',
   },
   {
-    name: 'Vera L.',
-    text: 'O programa de pilates clínico com a Sofia resolveu um problema de costas que tinha há anos.',
-    stars: 5,
-    when: 'há 3 semanas',
+    text: 'Sem dúvida que ganhei muita consciência de treino estes últimos meses.',
   },
 ];

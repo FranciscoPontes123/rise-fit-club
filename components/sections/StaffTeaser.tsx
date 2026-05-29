@@ -1,18 +1,17 @@
 import Link from 'next/link';
-import Photo from '@/components/ui/Photo';
+import Image from 'next/image';
 import { TRAINERS } from '@/data/trainers';
 import { IconArrow } from '@/components/icons';
 
 export default function StaffTeaser() {
   return (
-    <section className="page">
-      <div className="container">
+    <section className="page" style={{ overflow: 'hidden' }}>
+      <div className="container" style={{ marginBottom: 40 }}>
         <div
           style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'flex-end',
-            marginBottom: 56,
             gap: 24,
             flexWrap: 'wrap',
           }}
@@ -27,51 +26,88 @@ export default function StaffTeaser() {
             Conhecer staff <IconArrow rot={-90} />
           </Link>
         </div>
+      </div>
 
-        <div
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 2 }}
-          className="staff-grid"
-        >
-          {TRAINERS.slice(0, 3).map((t, i) => (
-            <article
-              key={i}
+      <div
+        className="staff-scroll"
+        style={{
+          display: 'flex',
+          gap: 2,
+          overflowX: 'auto',
+          scrollSnapType: 'x mandatory',
+          paddingLeft: 'max(32px, calc((100vw - 1320px) / 2 + 32px))',
+          paddingRight: 32,
+          paddingBottom: 16,
+          cursor: 'grab',
+        }}
+      >
+        {TRAINERS.map((t, i) => (
+          <article
+            key={i}
+            className="staff-card"
+            style={{
+              background: '#111',
+              flexShrink: 0,
+              width: 280,
+              scrollSnapAlign: 'start',
+            }}
+          >
+            <div style={{ position: 'relative', height: 380, overflow: 'hidden' }}>
+              <Image
+                src={t.photo}
+                alt={t.name}
+                fill
+                style={{ objectFit: 'cover', objectPosition: t.photoPosition ?? 'top' }}
+                sizes="280px"
+              />
+            </div>
+            <div
               style={{
-                position: 'relative',
-                background: 'var(--surface)',
-                overflow: 'hidden',
+                padding: '16px 18px 20px',
+                borderTop: '3px solid var(--gold)',
+                background: '#111',
               }}
-              className="staff-card"
             >
-              <Photo h={460} label={t.name.toUpperCase()} />
               <div
                 style={{
-                  padding: '18px 22px 20px',
-                  borderTop: '3px solid var(--gold)',
-                  background: '#111',
+                  fontFamily: 'var(--head-font)',
+                  fontWeight: 800,
+                  fontSize: 22,
+                  textTransform: 'uppercase',
+                  letterSpacing: '.02em',
+                  lineHeight: 1,
+                  marginBottom: 8,
                 }}
               >
-                <div
-                  style={{
-                    fontFamily: 'var(--head-font)',
-                    fontWeight: 800,
-                    fontSize: 26,
-                    textTransform: 'uppercase',
-                    letterSpacing: '.02em',
-                    lineHeight: 1,
-                  }}
-                >
-                  {t.name}
-                </div>
+                {t.name}
               </div>
-            </article>
-          ))}
-        </div>
+              <div
+                style={{
+                  fontFamily: 'var(--mono)',
+                  fontSize: 10,
+                  letterSpacing: '.14em',
+                  textTransform: 'uppercase',
+                  color: '#666',
+                  lineHeight: 1.6,
+                }}
+              >
+                {t.role}
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
 
       <style>{`
-        @media (max-width: 880px) { .staff-grid { grid-template-columns: 1fr !important; gap: 2px !important; } }
+        .staff-scroll::-webkit-scrollbar { height: 2px; }
+        .staff-scroll::-webkit-scrollbar-track { background: #111; }
+        .staff-scroll::-webkit-scrollbar-thumb { background: var(--gold); }
+        .staff-scroll:active { cursor: grabbing; }
         .staff-card { transition: filter .2s; }
         .staff-card:hover { filter: brightness(1.06); }
+        @media (max-width: 760px) {
+          .staff-scroll { padding-left: 20px !important; }
+        }
       `}</style>
     </section>
   );

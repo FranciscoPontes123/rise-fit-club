@@ -112,6 +112,15 @@ export function IconPhone() {
   );
 }
 
+export function IconEmail() {
+  return (
+    <svg viewBox="0 0 32 32" className="ico">
+      <rect x="3" y="7" width="26" height="18" rx="2" />
+      <path d="M3 9l13 9 13-9" />
+    </svg>
+  );
+}
+
 export function IconIG() {
   return (
     <svg viewBox="0 0 32 32" className="ico">

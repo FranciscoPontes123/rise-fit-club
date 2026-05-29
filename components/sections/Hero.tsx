@@ -1,20 +1,13 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { IconArrow } from '@/components/icons';
 import Aurora from '@/components/ui/Aurora';
-import CountUp from '@/components/ui/CountUp';
 import Magnet from '@/components/ui/Magnet';
 
-const STATS = [
-  { display: '24/7', countTo: null,  suffix: '',  v: 'Acesso por app' },
-  { display: '5',    countTo: 5,     suffix: '',  v: 'Modalidades' },
-  { display: '35€',  countTo: 35,    suffix: '€', v: 'A partir de / mês' },
-  { display: '0€',   countTo: null,  suffix: '',  v: 'Sem joia' },
-];
 
 const LINES = [
-  { text: 'ELEVA O', delay: 80 },
-  { text: 'TEU', delay: 200 },
-  { text: 'NÍVEL', delay: 320, gold: true },
+  { text: 'ELEVA O TEU', delay: 80 },
+  { text: 'NÍVEL', delay: 200, gold: true },
 ];
 
 export default function Hero() {
@@ -95,27 +88,55 @@ export default function Hero() {
 
         {/* Headline — clip-path line reveal */}
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <div style={{ overflow: 'hidden' }}>
-            {LINES.map((line, i) => (
-              <div
-                key={i}
-                className="hero-line"
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
+            <div>
+              <div style={{ overflow: 'hidden' }}>
+                {LINES.map((line, i) => (
+                  <div
+                    key={i}
+                    className="hero-line"
+                    style={{
+                      fontFamily: 'var(--head-font)',
+                      fontWeight: 900,
+                      fontSize: 'clamp(64px,11vw,180px)',
+                      lineHeight: 0.88,
+                      color: line.gold ? 'var(--gold)' : '#fff',
+                      textTransform: 'uppercase',
+                      letterSpacing: '-.01em',
+                      animationDelay: `${line.delay}ms`,
+                      display: 'block',
+                      willChange: 'clip-path',
+                    }}
+                  >
+                    {line.text}
+                  </div>
+                ))}
+              </div>
+              <p
+                className="hero-sub"
                 style={{
-                  fontFamily: 'var(--head-font)',
-                  fontWeight: 900,
-                  fontSize: 'clamp(72px,13vw,210px)',
-                  lineHeight: 0.88,
-                  color: line.gold ? 'var(--gold)' : '#fff',
-                  textTransform: 'uppercase',
-                  letterSpacing: '-.01em',
-                  animationDelay: `${line.delay}ms`,
-                  display: 'block',
-                  willChange: 'clip-path',
+                  fontFamily: 'var(--body-font)',
+                  fontSize: 'clamp(15px,1.4vw,20px)',
+                  color: '#888',
+                  marginTop: 28,
+                  letterSpacing: '.04em',
                 }}
               >
-                {line.text}
-              </div>
-            ))}
+                A tua transformação começa agora.
+              </p>
+            </div>
+            <div className="hero-logo-big" aria-hidden>
+              <Magnet strength={0.18}>
+                <Image
+                  src="/Logo Transparente.png"
+                  alt=""
+                  width={400}
+                  height={400}
+                  className="hero-logo-img"
+                  style={{ objectFit: 'contain', width: 'clamp(220px,24vw,400px)', height: 'auto' }}
+                />
+              </Magnet>
+            </div>
           </div>
 
           {/* Divider */}
@@ -132,7 +153,7 @@ export default function Hero() {
             className="hero-bottom"
             style={{
               display: 'grid',
-              gridTemplateColumns: '1.4fr 0.9fr 1fr',
+              gridTemplateColumns: '1.4fr 0.9fr',
               gap: 40,
               alignItems: 'end',
             }}
@@ -140,16 +161,14 @@ export default function Hero() {
             {/* Paragraph */}
             <p
               style={{
-                fontSize: 'clamp(14px,1.3vw,17px)',
+                fontSize: 'clamp(17px,1.8vw,24px)',
                 lineHeight: 1.65,
                 color: '#909090',
                 margin: 0,
                 fontFamily: 'var(--body-font)',
               }}
             >
-              Treino real, equipa real, sem teatro. Treino livre,
-              personalizado, aulas de grupo, pilates clínico e jiu
-              jitsu — tudo isto aqui, no Rise Fit Club.
+              Um espaço com acompanhamento constante, onde nunca te irás sentir sozinho.
             </p>
 
             {/* CTAs */}
@@ -172,54 +191,6 @@ export default function Hero() {
                   Quero ser contactado
                 </Link>
               </Magnet>
-            </div>
-
-            {/* Stats — 2×2 grid */}
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: 1,
-                background: '#1e1e1e',
-              }}
-            >
-              {STATS.map((s, i) => (
-                <div
-                  key={i}
-                  style={{
-                    padding: '14px 12px',
-                    background: 'var(--bg)',
-                  }}
-                >
-                  <div
-                    style={{
-                      fontFamily: 'var(--head-font)',
-                      fontWeight: 900,
-                      fontSize: 30,
-                      color: 'var(--gold)',
-                      lineHeight: 1,
-                    }}
-                  >
-                    {s.countTo != null ? (
-                      <CountUp to={s.countTo} suffix={s.suffix} duration={1.6} />
-                    ) : (
-                      s.display
-                    )}
-                  </div>
-                  <div
-                    className="muted"
-                    style={{
-                      fontFamily: 'var(--mono)',
-                      fontSize: 9,
-                      letterSpacing: '.14em',
-                      textTransform: 'uppercase',
-                      marginTop: 5,
-                    }}
-                  >
-                    {s.v}
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
@@ -264,10 +235,25 @@ export default function Hero() {
           .hero-bottom { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
           .hero-bottom > div:last-child { grid-column: 1 / -1; grid-template-columns: repeat(4,1fr) !important; }
         }
+        @keyframes logo-enter {
+          from { opacity: 0; transform: translateY(32px) scale(0.88); }
+          to   { opacity: 1; transform: translateY(0)    scale(1); }
+        }
+        @keyframes logo-float {
+          0%, 100% { transform: translateY(0); }
+          50%       { transform: translateY(-14px); }
+        }
+        .hero-logo-img {
+          animation:
+            logo-enter 1.1s cubic-bezier(.16,1,.3,1) 0.35s both,
+            logo-float 5s ease-in-out 1.5s infinite;
+          filter: drop-shadow(0 0 40px rgba(201,168,76,.18));
+        }
         @media (max-width: 640px) {
           .hero-bottom { grid-template-columns: 1fr !important; }
           .hero-bottom > div:last-child { grid-column: auto !important; }
           .hero-side { display: none; }
+          .hero-logo-big { display: none; }
         }
       `}</style>
     </section>

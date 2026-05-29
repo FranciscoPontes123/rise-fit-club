@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Photo from '@/components/ui/Photo';
+import Image from 'next/image';
 import { TRAINERS } from '@/data/trainers';
 
 export const metadata: Metadata = {
@@ -31,11 +31,19 @@ export default function StaffPage() {
             className="staff-grid"
           >
             {TRAINERS.map((t, i) => (
-              <article key={i} style={{ background: 'var(--surface)' }}>
-                <Photo h={480} label={t.name.toUpperCase()} />
+              <article key={i} style={{ background: '#111' }}>
+                <div style={{ position: 'relative', height: 480, overflow: 'hidden' }}>
+                  <Image
+                    src={t.photo}
+                    alt={t.name}
+                    fill
+                    style={{ objectFit: 'cover', objectPosition: t.photoPosition ?? 'top' }}
+                    sizes="(max-width: 560px) 100vw, (max-width: 880px) 50vw, 33vw"
+                  />
+                </div>
                 <div
                   style={{
-                    padding: '18px 20px 20px',
+                    padding: '18px 20px 22px',
                     borderTop: '3px solid var(--gold)',
                     background: '#111',
                   }}
@@ -48,9 +56,22 @@ export default function StaffPage() {
                       textTransform: 'uppercase',
                       letterSpacing: '.02em',
                       lineHeight: 1,
+                      marginBottom: 8,
                     }}
                   >
                     {t.name}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: 'var(--mono)',
+                      fontSize: 10,
+                      letterSpacing: '.16em',
+                      textTransform: 'uppercase',
+                      color: '#666',
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {t.role}
                   </div>
                 </div>
               </article>

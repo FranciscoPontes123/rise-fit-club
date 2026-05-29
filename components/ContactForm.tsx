@@ -26,7 +26,7 @@ export default function ContactForm() {
   const change = (k: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     const ne: Errors = {};
     if (!form.nome.trim()) ne.nome = 'obrigatório';
@@ -34,7 +34,13 @@ export default function ContactForm() {
     if (!form.email.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) ne.email = 'email inválido';
     if (!form.plano) ne.plano = 'escolhe um';
     setErrs(ne);
-    if (Object.keys(ne).length === 0) setSent(true);
+    if (Object.keys(ne).length > 0) return;
+    const res = await fetch('https://formspree.io/f/mdajjkvy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ nome: form.nome, tel: form.tel, email: form.email, plano: form.plano, horario: form.horario }),
+    });
+    if (res.ok) setSent(true);
   };
 
   if (sent) {
@@ -103,16 +109,19 @@ export default function ContactForm() {
         <select id="plano" value={form.plano} onChange={change('plano')}>
           <option value="">Escolhe um plano</option>
           <optgroup label="Planos de acesso">
-            <option value="base">Base — Treino livre (35€/mês)</option>
-            <option value="inter">Intermédio (55€/mês)</option>
-            <option value="avan">Avançado — Acesso 24h (60€/mês)</option>
+            <option value="base">Pack Base — 27€/mês · Horário restrito</option>
+            <option value="inter">Pack Intermédio — 35€/mês · Sem restrição de horário</option>
+            <option value="verao">★ Pack Verão — Paga Jun + Jul, Agosto grátis</option>
+            <option value="pt-acesso">Treino Personalizado — desde 40€/mês</option>
           </optgroup>
-          <optgroup label="Treino personalizado">
+          <optgroup label="Serviços de acompanhamento">
             <option value="pt-individual">Treino Individual (PT)</option>
             <option value="pt-duo">Treino Duo</option>
+            <option value="pt-small-group">Small Group Training</option>
             <option value="online">Acompanhamento Online</option>
+            <option value="sala">Acompanhamento em Sala</option>
           </optgroup>
-          <option value="exp">Aula experimental gratuita</option>
+          <option value="exp">Avaliação gratuita</option>
         </select>
         {errs.plano && <span className="err-msg">{errs.plano}</span>}
       </div>

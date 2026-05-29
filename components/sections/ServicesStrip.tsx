@@ -21,7 +21,7 @@ export default function ServicesStrip() {
           <div>
             <div className="eyebrow" style={{ marginBottom: 14 }}>— O que oferecemos</div>
             <h2 style={{ fontSize: 'clamp(40px,5.5vw,72px)' }}>
-              Cinco modalidades.
+              As nossas modalidades.
               <br />
               <span className="gold">Um só tecto.</span>
             </h2>
@@ -40,80 +40,73 @@ export default function ServicesStrip() {
                 className="svc-row"
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: '64px 1fr 1.6fr 32px',
-                  gap: '0 32px',
-                  padding: '26px 0',
+                  gridTemplateColumns: '52px 1fr auto',
+                  gap: '0 24px',
+                  padding: '22px 0',
                   borderBottom: '1px solid var(--line)',
                   alignItems: 'center',
-                  transition: 'background .15s',
-                  cursor: 'default',
+                  position: 'relative',
                 }}
               >
+                {/* Gold left accent */}
+                <div className="svc-accent" />
+
                 {/* Index */}
                 <div
+                  className="svc-index"
                   style={{
                     fontFamily: 'var(--mono)',
-                    fontSize: 11,
-                    color: '#444',
-                    letterSpacing: '.2em',
-                    paddingLeft: 4,
+                    fontSize: 10,
+                    color: '#333',
+                    letterSpacing: '.24em',
+                    paddingLeft: 2,
+                    transition: 'color .2s',
                   }}
-                  className="svc-index"
                 >
-                  0{i + 1}
+                  {String(i + 1).padStart(2, '0')}
                 </div>
 
-                {/* Name + sub */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                  <Ico />
-                  <div>
-                    <div
-                      style={{
-                        fontFamily: 'var(--head-font)',
-                        fontWeight: 800,
-                        fontSize: 'clamp(20px,2.4vw,32px)',
-                        textTransform: 'uppercase',
-                        letterSpacing: '.02em',
-                        lineHeight: 1,
-                      }}
-                    >
-                      {s.name}
-                    </div>
-                    <div
-                      className="muted"
-                      style={{
-                        fontFamily: 'var(--mono)',
-                        fontSize: 10,
-                        letterSpacing: '.18em',
-                        textTransform: 'uppercase',
-                        marginTop: 5,
-                      }}
-                    >
-                      {s.sub}
-                    </div>
+                {/* Name + icon */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 14, minWidth: 0 }}>
+                  <span className="svc-icon" style={{ flexShrink: 0, opacity: 0.45, transition: 'opacity .2s' }}>
+                    <Ico />
+                  </span>
+                  <div
+                    className="svc-name"
+                    style={{
+                      fontFamily: 'var(--head-font)',
+                      fontWeight: 900,
+                      fontSize: 'clamp(22px,3vw,42px)',
+                      textTransform: 'uppercase',
+                      letterSpacing: '.015em',
+                      lineHeight: 1,
+                      color: '#e8e4dc',
+                      transition: 'color .2s',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
+                    {s.name}
                   </div>
                 </div>
 
-                {/* Description */}
-                <p
-                  className="muted svc-desc"
-                  style={{ fontSize: 14, lineHeight: 1.55, margin: 0 }}
-                >
-                  {s.desc}
-                </p>
-
-                {/* Arrow */}
+                {/* Sub tag */}
                 <div
-                  className="svc-arrow"
+                  className="svc-sub"
                   style={{
-                    color: 'var(--gold)',
-                    opacity: 0,
-                    transition: 'opacity .2s, transform .2s',
-                    display: 'flex',
-                    alignItems: 'center',
+                    fontFamily: 'var(--mono)',
+                    fontSize: 14,
+                    letterSpacing: '.16em',
+                    textTransform: 'uppercase',
+                    color: '#666',
+                    textAlign: 'right',
+                    transition: 'color .2s',
+                    whiteSpace: 'nowrap',
+                    paddingLeft: 16,
                   }}
                 >
-                  <IconArrow rot={-90} />
+                  {s.sub}
                 </div>
               </div>
             );
@@ -122,13 +115,27 @@ export default function ServicesStrip() {
       </div>
 
       <style>{`
-        .svc-row:hover { background: var(--surface); padding-left: 16px; padding-right: 16px; margin-left: -16px; margin-right: -16px; }
-        .svc-row:hover .svc-arrow { opacity: 1 !important; transform: translateX(4px); }
+        .svc-row { cursor: default; }
+        .svc-accent {
+          position: absolute;
+          left: -24px;
+          top: 0;
+          bottom: 0;
+          width: 2px;
+          background: var(--gold);
+          transform: scaleY(0);
+          transform-origin: bottom;
+          transition: transform .25s cubic-bezier(.16,1,.3,1);
+        }
+        .svc-row:hover .svc-accent { transform: scaleY(1); }
         .svc-row:hover .svc-index { color: var(--gold) !important; }
+        .svc-row:hover .svc-name { color: #fff !important; }
+        .svc-row:hover .svc-sub { color: #999 !important; }
+        .svc-row:hover .svc-icon { opacity: 0.8 !important; }
         @media (max-width: 760px) {
-          .svc-row { grid-template-columns: 40px 1fr !important; gap: 0 16px !important; }
-          .svc-desc { display: none; }
-          .svc-arrow { display: none; }
+          .svc-row { grid-template-columns: 40px 1fr !important; }
+          .svc-sub { display: none !important; }
+          .svc-accent { left: -16px; }
         }
       `}</style>
     </section>

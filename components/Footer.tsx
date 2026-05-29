@@ -1,15 +1,17 @@
 import Link from 'next/link';
 import RiseLogo from './RiseLogo';
-import { IconMap, IconPhone, IconIG } from './icons';
+import { IconPhone, IconIG, IconEmail } from './icons';
 
 const NAV_LINKS = [
   { href: '/', label: 'Início' },
   { href: '/espaco', label: 'Espaço' },
   { href: '/planos', label: 'Planos' },
+  { href: '/aulas', label: 'Aulas de Grupo' },
   { href: '/staff', label: 'Staff' },
   { href: '/resultados', label: 'Resultados' },
   { href: '/contacto', label: 'Contacto' },
   { href: '/faq', label: 'FAQ' },
+  { href: '/recrutamento', label: 'Recrutamento' },
 ];
 
 export default function Footer() {
@@ -58,14 +60,13 @@ export default function Footer() {
                 style={{
                   fontFamily: 'var(--head-font)',
                   fontWeight: 900,
-                  letterSpacing: '.08em',
-                  fontSize: 20,
+                  letterSpacing: '.18em',
+                  fontSize: 15,
+                  color: '#f0ece4',
                   lineHeight: 1,
                 }}
               >
-                RISE
-                <br />
-                <span style={{ color: 'var(--gold)', fontSize: 11, letterSpacing: '.32em' }}>FIT · CLUB</span>
+                RISE FIT CLUB
               </span>
             </div>
             <p
@@ -77,8 +78,7 @@ export default function Footer() {
                 fontFamily: 'var(--body-font)',
               }}
             >
-              Ginásio feito para todos. Se queres liberdade, o Rise é para ti.
-              Se queres acompanhamento, o Rise é para ti.
+              Centro de treino feito para todos. Se queres liberdade, o Rise é para ti. Se queres acompanhamento, o Rise é para ti.
             </p>
           </div>
 
@@ -125,12 +125,18 @@ export default function Footer() {
                 color: '#555',
               }}
             >
+              <li>Avaliação Premium Gratuita</li>
               <li>Treino Livre</li>
               <li>Treino Personalizado</li>
+              <li>Small Group Training</li>
               <li>Aulas de Grupo</li>
-              <li>Pilates Clínico</li>
-              <li>Jiu Jitsu</li>
-              <li>Fit Boxe</li>
+              <li>Método Neurofuncional</li>
+              <li>Preparação de Atletas</li>
+              <li>Jiu-Jitsu</li>
+              <li>Ginástica Sénior</li>
+              <li>Acompanhamento Online</li>
+              <li>Preparação de Atletas</li>
+              <li>Defesa Pessoal / Boxe</li>
             </ul>
           </div>
 
@@ -150,16 +156,18 @@ export default function Footer() {
                 lineHeight: 1.55,
               }}
             >
-              <li style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-                <IconMap />
-                <span style={{ color: '#666' }}>
-                  Av. General Humberto Delgado 2A<br />
-                  Almargem do Bispo, Sintra
-                </span>
-              </li>
               <li style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                 <IconPhone />
                 <span style={{ color: '#666' }}>+351 963 329 814</span>
+              </li>
+              <li style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+                <IconEmail />
+                <a
+                  href="mailto:risefitclub.almargem@gmail.com"
+                  style={{ color: '#666', fontSize: 12 }}
+                >
+                  risefitclub.almargem@gmail.com
+                </a>
               </li>
               <li style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                 <IconIG />

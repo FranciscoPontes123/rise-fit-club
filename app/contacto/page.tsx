@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
-import { IconWhatsapp, IconPhone, IconIG, IconMap, IconClock } from '@/components/icons';
+import { IconWhatsapp, IconPhone, IconIG, IconEmail, IconClock } from '@/components/icons';
 
 export const metadata: Metadata = {
   title: 'Contacto — Rise Fit Club',
@@ -97,6 +97,15 @@ export default function ContactoPage() {
                     </a>
                   </div>
                   <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
+                    <IconEmail />
+                    <a
+                      href="mailto:risefitclub.almargem@gmail.com"
+                      style={{ fontFamily: 'var(--mono)', fontSize: 14, color: 'var(--muted)' }}
+                    >
+                      risefitclub.almargem@gmail.com
+                    </a>
+                  </div>
+                  <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
                     <IconIG />
                     <a
                       href="https://www.instagram.com/rise.fitclub"
@@ -107,14 +116,6 @@ export default function ContactoPage() {
                     >
                       @rise.fitclub
                     </a>
-                  </div>
-                  <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                    <IconMap />
-                    <span style={{ fontFamily: 'var(--mono)', fontSize: 13, lineHeight: 1.6, color: 'var(--muted)' }}>
-                      Av. General Humberto Delgado 2A
-                      <br />
-                      Almargem do Bispo, Sintra
-                    </span>
                   </div>
                 </div>
               </div>
