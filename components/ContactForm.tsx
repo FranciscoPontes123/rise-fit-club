@@ -16,10 +16,12 @@ interface Errors {
   tel?: string;
   email?: string;
   plano?: string;
+  termos?: string;
 }
 
 export default function ContactForm() {
   const [form, setForm] = useState<FormState>({ nome: '', tel: '', email: '', plano: '', horario: '' });
+  const [termos, setTermos] = useState(false);
   const [errs, setErrs] = useState<Errors>({});
   const [sent, setSent] = useState(false);
 
@@ -33,6 +35,7 @@ export default function ContactForm() {
     if (!form.tel.trim() || form.tel.replace(/\D/g, '').length < 9) ne.tel = 'número inválido';
     if (!form.email.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) ne.email = 'email inválido';
     if (!form.plano) ne.plano = 'escolhe um';
+    if (!termos) ne.termos = 'deves aceitar para continuar';
     setErrs(ne);
     if (Object.keys(ne).length > 0) return;
     const res = await fetch('https://formspree.io/f/mdajjkvy', {
@@ -73,6 +76,7 @@ export default function ContactForm() {
           onClick={() => {
             setSent(false);
             setForm({ nome: '', tel: '', email: '', plano: '', horario: '' });
+            setTermos(false);
             setErrs({});
           }}
           className="btn btn-outline-gold"
@@ -132,6 +136,32 @@ export default function ContactForm() {
           <option value="tarde">Tarde (12h–18h)</option>
           <option value="noite">Noite (18h–21h)</option>
         </select>
+      </div>
+
+      <div style={{ gridColumn: 'span 2', marginTop: 4 }}>
+        <label style={{ display: 'flex', alignItems: 'flex-start', gap: 10, cursor: 'pointer' }}>
+          <input
+            type="checkbox"
+            checked={termos}
+            onChange={(e) => {
+              setTermos(e.target.checked);
+              if (e.target.checked) setErrs((prev) => ({ ...prev, termos: undefined }));
+            }}
+            style={{ marginTop: 3, accentColor: 'var(--gold)', width: 16, height: 16, flexShrink: 0 }}
+          />
+          <span style={{ fontSize: 13, lineHeight: 1.5, color: errs.termos ? 'var(--err, #e05)' : 'inherit' }}>
+            Li e aceito a{' '}
+            <a href="/privacidade" target="_blank" rel="noopener noreferrer" className="gold" style={{ textDecoration: 'underline' }}>
+              Política de Privacidade
+            </a>{' '}
+            e os{' '}
+            <a href="/termos" target="_blank" rel="noopener noreferrer" className="gold" style={{ textDecoration: 'underline' }}>
+              Termos e Condições
+            </a>
+            {' '}*
+          </span>
+        </label>
+        {errs.termos && <span className="err-msg" style={{ marginTop: 4, display: 'block', paddingLeft: 26 }}>{errs.termos}</span>}
       </div>
 
       <div style={{ gridColumn: 'span 2', display: 'flex', alignItems: 'center', gap: 16, marginTop: 8, flexWrap: 'wrap' }}>
