@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import RiseLogo from './RiseLogo';
+import Image from 'next/image';
 import { IconMenu, IconClose } from './icons';
 import Magnet from './ui/Magnet';
 
@@ -65,7 +65,7 @@ export default function Nav() {
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 74 }}>
         {/* Logo */}
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <RiseLogo size={36} />
+          <Image src="/Logo Transparente.png" alt="Rise Fit Club" width={36} height={36} style={{ objectFit: 'contain' }} />
           <span
             style={{
               fontFamily: 'var(--head-font)',
