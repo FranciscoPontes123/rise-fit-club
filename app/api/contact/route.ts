@@ -8,16 +8,11 @@ export async function POST(req: NextRequest) {
     const message = encodeURIComponent(
       `Novo contacto Rise Fit Club\nNome: ${nome}\nTelemovel: ${tel}\nEmail: ${email}\nPlano: ${plano}${horario ? `\nHorario: ${horario}` : ''}`
     );
-    const phone = process.env.CALLMEBOT_PHONE;
-    const apikey = process.env.CALLMEBOT_APIKEY;
-    console.log('[CallMeBot] phone:', phone, 'apikey:', apikey);
-    const waRes = await fetch(
-      `https://api.callmebot.com/whatsapp.php?phone=${phone}&text=${message}&apikey=${apikey}`
+    await fetch(
+      `https://api.callmebot.com/whatsapp.php?phone=${process.env.CALLMEBOT_PHONE}&text=${message}&apikey=${process.env.CALLMEBOT_APIKEY}`
     );
-    const waText = await waRes.text();
-    console.log('[CallMeBot] status:', waRes.status, 'response:', waText);
-  } catch (err) {
-    console.error('[CallMeBot] error:', err);
+  } catch {
+    // não bloqueia o envio se o WhatsApp falhar
   }
 
   // Formspree como backup

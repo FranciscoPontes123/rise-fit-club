@@ -113,11 +113,11 @@ export default function ContactForm() {
         <select id="plano" value={form.plano} onChange={change('plano')}>
           <option value="">Escolhe um plano</option>
           <optgroup label="Planos de acesso">
-            <option value="base">Pack Base — 27€/mês · Horário restrito</option>
-            <option value="inter">Pack Intermédio — 35€/mês · Sem restrição de horário</option>
+            <option value="base">Pack 12 às 15 — 27€/mês</option>
+            <option value="inter">Pack sem restrição de horário — 35€/mês</option>
             <option value="verao">★ Pack Verão — Paga Jun + Jul, Agosto grátis</option>
           </optgroup>
-          <optgroup label="Treino Personalizado — Desde 40€/mês">
+          <optgroup label="Treino Personalizado">
             <option value="pt-individual">Treino Individual (PT)</option>
             <option value="pt-duo">Treino Duo</option>
             <option value="pt-small-group">Small Group Training</option>
