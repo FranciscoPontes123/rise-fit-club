@@ -38,9 +38,9 @@ export default function ContactForm() {
     if (!termos) ne.termos = 'deves aceitar para continuar';
     setErrs(ne);
     if (Object.keys(ne).length > 0) return;
-    const res = await fetch('https://formspree.io/f/mdajjkvy', {
+    const res = await fetch('/api/contact', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nome: form.nome, tel: form.tel, email: form.email, plano: form.plano, horario: form.horario }),
     });
     if (res.ok) setSent(true);
