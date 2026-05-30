@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 };
 
 const IMAGES = [
-  { label: 'Transformação 1', src: '/Transformação 1.PNG' },
-  { label: 'Transformação 2', src: '/Transformação 2.PNG' },
-  { label: 'Transformação 3', src: '/Transformação 3.PNG' },
-  { label: 'Transformação 4', src: '/Transformação 4.PNG' },
-  { label: 'Transformação 5', src: '/Transformação 5.png' },
-  { label: 'Transformação 6', src: '/Transformação 6.PNG' },
+  { label: 'Paula', src: '/Transformação 1.PNG' },
+  { label: 'João', src: '/Transformação 2.PNG' },
+  { label: 'Gonçalo', src: '/Transformação 3.PNG' },
+  { label: 'Sónia', src: '/Transformação 4.PNG' },
+  { label: 'Mónica', src: '/Transformação 5.png' },
+  { label: 'João', src: '/Transformação 6.PNG' },
 ];
 
 export default function ResultadosPage() {
