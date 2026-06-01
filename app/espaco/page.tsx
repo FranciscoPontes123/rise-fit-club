@@ -23,7 +23,7 @@ const HIGHLIGHTS = [
   },
   {
     title: 'Zona Cardio',
-    items: ['Passadeiras', 'Bicicleta', 'Remo'],
+    items: ['Passadeiras', 'Bicicleta', 'Elíptica'],
   },
   {
     title: 'Aulas de Grupo',
