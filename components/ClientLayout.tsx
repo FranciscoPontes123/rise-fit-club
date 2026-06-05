@@ -13,7 +13,12 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     <>
       <div
         aria-hidden
-        style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}
+        style={{
+          position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none',
+          transform: 'translateZ(0)',
+          WebkitTransform: 'translateZ(0)',
+          willChange: 'transform',
+        }}
       >
         <Aurora colorStops={['rgba(251,204,31,0.13)', 'rgba(232,0,13,0.09)', 'rgba(251,204,31,0.07)']} />
       </div>

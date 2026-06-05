@@ -35,7 +35,8 @@ export default function PlanosPopup() {
         background: 'rgba(0,0,0,0.78)',
         backdropFilter: 'blur(6px)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        padding: '24px',
+        padding: '16px',
+        overflowY: 'auto',
         animation: 'popup-bg-in 0.3s ease both',
       }}
     >
@@ -85,7 +86,7 @@ export default function PlanosPopup() {
         </div>
 
         {/* Content */}
-        <div style={{
+        <div className="popup-content" style={{
           padding: '52px 44px',
           display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 20,
         }}>
@@ -133,7 +134,8 @@ export default function PlanosPopup() {
         }
         @media (max-width: 640px) {
           .popup-inner { grid-template-columns: 1fr !important; }
-          .popup-inner > div:first-child { min-height: 240px !important; }
+          .popup-inner > div:first-child { display: none !important; }
+          .popup-content { padding: 36px 24px !important; }
         }
       `}</style>
     </div>,
