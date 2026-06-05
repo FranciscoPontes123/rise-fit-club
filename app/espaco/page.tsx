@@ -4,6 +4,25 @@ import SectionHead from '@/components/ui/SectionHead';
 import LocationStrip from '@/components/sections/LocationStrip';
 import Magnet from '@/components/ui/Magnet';
 import { IconCheck } from '@/components/icons';
+import VideoRotator from '@/components/ui/VideoRotator';
+
+const SALA_PRINCIPAL = [
+  '/Sala Principal/1.MOV',
+  '/Sala Principal/2.MOV',
+  '/Sala Principal/3.MOV',
+  '/Sala Principal/4.MOV',
+  '/Sala Principal/5.MOV',
+];
+
+const SALA_SECUNDARIA = [
+  '/Sala Secundária/1.MOV',
+  '/Sala Secundária/2.MOV',
+  '/Sala Secundária/3.MOV',
+  '/Sala Secundária/4.MOV',
+  '/Sala Secundária/5.MOV',
+  '/Sala Secundária/6.MOV',
+  '/Sala Secundária/7.MOV',
+];
 
 export const metadata: Metadata = {
   title: 'Espaço & Equipamento — Rise Fit Club',
@@ -61,22 +80,8 @@ export default function EspacoPage() {
       <section style={{ padding: '40px 0 80px' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="video-grid">
-            <video
-              src="/Sala Principal.mov"
-              autoPlay
-              muted
-              loop
-              playsInline
-              style={{ width: '100%', height: 500, objectFit: 'cover', display: 'block' }}
-            />
-            <video
-              src="/Sala Secundária.MOV"
-              autoPlay
-              muted
-              loop
-              playsInline
-              style={{ width: '100%', height: 500, objectFit: 'cover', display: 'block' }}
-            />
+            <VideoRotator srcs={SALA_PRINCIPAL} height={500} className="sala-video" />
+            <VideoRotator srcs={SALA_SECUNDARIA} height={500} className="sala-video" />
           </div>
         </div>
         <style>{`

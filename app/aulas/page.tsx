@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { IconArrow } from '@/components/icons';
 import Magnet from '@/components/ui/Magnet';
-import TiltCard from '@/components/ui/TiltCard';
 
 export const metadata: Metadata = {
   title: 'Aulas de Grupo — Rise Fit Club',
@@ -17,57 +16,62 @@ const SCHEDULE: DayEntry[] = [
   {
     day: 'Segunda',
     classes: [
-      { time: '09:00', name: 'Yoga' },
-      { time: '10:30', name: 'Circuito' },
-      { time: '19:00', name: 'Jiu-Jitsu', restricted: true },
+      { time: '10:30', name: 'Yoga' },
+      { time: '18:30', name: 'Circuito' },
+      { time: '19:15', name: 'Jiu-Jitsu Kids', restricted: true },
+      { time: '20:10', name: 'Jiu-Jitsu Adultos', restricted: true },
     ],
   },
   {
     day: 'Terça',
     classes: [
-      { time: '09:00', name: 'Pilates', restricted: true },
-      { time: '12:30', name: 'HIIT' },
-      { time: '18:00', name: 'Fit Boxe' },
-      { time: '19:30', name: 'Jiu-Jitsu', restricted: true },
-      { time: '21:00', name: 'Circuito' },
+      { time: '11:00', name: 'Circuito Gym', restricted: true },
+      { time: '12:00', name: 'Jiu-Jitsu No-Gi' },
+      { time: '18:00', name: 'Pilates' },
+      { time: '18:45', name: 'HIIT' },
+      { time: '19:20', name: 'Fit Boxe' },
     ],
   },
   {
     day: 'Quarta',
     classes: [
-      { time: '10:00', name: 'Ginástica Sénior', restricted: true },
-      { time: '19:00', name: 'Jiu-Jitsu', restricted: true },
+      { time: '10:40', name: 'Ginástica Sénior' },
+      { time: '19:15', name: 'Jiu-Jitsu Kids', restricted: true },
+      { time: '20:10', name: 'Jiu-Jitsu Adultos', restricted: true },
     ],
   },
   {
     day: 'Quinta',
     classes: [
-      { time: '09:00', name: 'Pilates', restricted: true },
-      { time: '12:30', name: 'GAP' },
-      { time: '18:00', name: 'Fit Boxe' },
-      { time: '19:30', name: 'Jiu-Jitsu', restricted: true },
+      { time: '12:00', name: 'Jiu-Jitsu No-Gi' },
+      { time: '18:00', name: 'Fit Boxe', restricted: true, sub: 'Small Group' },
+      { time: '18:30', name: 'Pilates' },
+      { time: '19:15', name: 'GAP' },
+      { time: '20:40', name: 'Fit Boxe', restricted: true, sub: 'Small Group' },
     ],
   },
   {
     day: 'Sexta',
     classes: [
-      { time: '10:00', name: 'Ginástica Sénior', restricted: true },
-      { time: '19:00', name: 'Jiu-Jitsu', restricted: true },
+      { time: '10:40', name: 'Ginástica Sénior' },
+      { time: '19:15', name: 'Jiu-Jitsu Kids', restricted: true },
+      { time: '20:10', name: 'Jiu-Jitsu Adultos', restricted: true },
     ],
   },
 ];
 
 const MODALITIES = [
-  { name: 'Yoga',                   days: 'Segunda' },
-  { name: 'Pilates',                days: 'Terça · Quinta' },
-  { name: 'HIIT',                   days: 'Terça' },
-  { name: 'Fit Boxe',               days: 'Terça · Quinta' },
-  { name: 'Circuito',               days: 'Segunda · Terça' },
-  { name: 'GAP',                    days: 'Quinta' },
-  { name: 'Ginástica Sénior',       days: 'Quarta · Sexta' },
-  { name: 'Jiu-Jitsu',              days: 'Seg · Ter · Qua · Qui · Sex' },
-  { name: 'Preparação de Atletas',  days: 'Aulas Particulares · Jiu-Jitsu' },
-  { name: 'Defesa Pessoal / Boxe',  days: 'Aulas Particulares' },
+  { name: 'Yoga',              days: 'Segunda' },
+  { name: 'Circuito',          days: 'Segunda' },
+  { name: 'Circuito Gym',      days: 'Terça' },
+  { name: 'Pilates',           days: 'Terça · Quinta' },
+  { name: 'HIIT',              days: 'Terça' },
+  { name: 'Fit Boxe',          days: 'Terça · Quinta' },
+  { name: 'Ginástica Sénior',  days: 'Quarta · Sexta' },
+  { name: 'GAP',               days: 'Quinta' },
+  { name: 'Jiu-Jitsu No-Gi',  days: 'Terça · Quinta' },
+  { name: 'Jiu-Jitsu Kids',    days: 'Seg · Qua · Sex' },
+  { name: 'Jiu-Jitsu Adultos', days: 'Seg · Qua · Sex' },
 ];
 
 const cols = SCHEDULE.length;
@@ -147,13 +151,12 @@ export default function AulasPage() {
                   );
                 }
                 return (
-                  <TiltCard
+                  <div
                     key={`${col.day}-${rowIdx}`}
-                    maxTilt={8}
+                    className="sched-cell"
                     style={{
                       padding: '18px 16px',
                       background: cls.restricted ? '#0f0f0f' : '#111',
-                      border: '1px solid #1a1a1a',
                       minHeight: 80,
                     }}
                   >
@@ -182,7 +185,7 @@ export default function AulasPage() {
                         {cls.sub}
                       </div>
                     )}
-                  </TiltCard>
+                  </div>
                 );
               })
             )}
@@ -204,6 +207,15 @@ export default function AulasPage() {
           </div>
 
           <style>{`
+            .sched-cell {
+              border: 1px solid transparent;
+              transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            }
+            .sched-cell:hover {
+              border-color: rgba(251,204,31,0.4);
+              background: #181818 !important;
+              box-shadow: inset 0 0 0 1px rgba(251,204,31,0.08), 0 0 16px rgba(251,204,31,0.06);
+            }
             @media (max-width: 760px) {
               .sched-grid { grid-template-columns: repeat(3, 1fr) !important; }
             }

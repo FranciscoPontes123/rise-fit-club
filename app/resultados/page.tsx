@@ -12,12 +12,25 @@ export const metadata: Metadata = {
 };
 
 const IMAGES = [
-  { label: 'Paula', src: '/Transformação 1.PNG' },
-  { label: 'João', src: '/Transformação 2.PNG' },
-  { label: 'Gonçalo', src: '/Transformação 3.PNG' },
-  { label: 'Sónia', src: '/Transformação 4.PNG' },
-  { label: 'Mónica', src: '/Transformação 5.png' },
-  { label: 'João', src: '/Transformação 6.PNG' },
+  { label: 'Paula',    src: '/Transformações/Transformação 1.PNG' },
+  { label: 'João',     src: '/Transformações/Transformação 2.PNG' },
+  { label: 'Gonçalo',  src: '/Transformações/Transformação 3.PNG' },
+  { label: 'Sónia',    src: '/Transformações/Transformação 4.PNG' },
+  { label: 'Mónica',   src: '/Transformações/Transformação 5.png' },
+  { label: 'João',     src: '/Transformações/Transformação 6.PNG' },
+  { label: 'João',     src: '/Transformações/Transformação 7.png' },
+  { label: 'Mónica',   src: '/Transformações/Transformação 8.png' },
+  { label: 'Ivan',     src: '/Transformações/Transformação 9.png' },
+  { label: 'Paula',    src: '/Transformações/Transformação 10.png' },
+  { label: 'Bruno',    src: '/Transformações/Transformação 11.png' },
+  { label: 'Sofia',    src: '/Transformações/Transformação 12.png' },
+  { label: 'Gonçalo',  src: '/Transformações/Transformação 13.png' },
+  { label: 'Sofia',    src: '/Transformações/Transformação 14.png' },
+  { label: 'Gean',     src: '/Transformações/Transformação 15.png' },
+  { label: 'Pendente', src: '/Transformações/Transformação 16.png' },
+  { label: 'Bruno',    src: '/Transformações/Transformação 17.png' },
+  { label: 'Mónica',   src: '/Transformações/Transformação 18.png' },
+  { label: 'Gonçalo',  src: '/Transformações/Transformação 19.png' },
 ];
 
 export default function ResultadosPage() {

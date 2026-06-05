@@ -174,10 +174,10 @@ export default function PlanosPage() {
             alignItems: 'start',
           }}>
             {([
-              { src: '/Pack Base.jpeg',                  alt: 'Pack Mensal Base — 35€/mês',           stagger: false, featured: false, wa: wa('Olá! Tenho interesse no Pack Base (35€/mês) do Rise Fit Club. Podem dar-me mais informações?') },
-              { src: '/Pack Hora de Almoço.jpeg',        alt: 'Pack Hora de Almoço — 27€/mês',        stagger: true,  featured: false, wa: wa('Olá! Tenho interesse no Pack Hora de Almoço (27€/mês) do Rise Fit Club. Podem dar-me mais informações?') },
-              { src: '/Pack Treino Personalizado.jpeg',  alt: 'Treino Personalizado — desde 40€/mês', stagger: false, featured: false, wa: wa('Olá! Tenho interesse no Pack de Treino Personalizado do Rise Fit Club. Podem dar-me mais informações?') },
-              { src: '/Pack Campanha Verão.jpeg',        alt: 'Campanha de Verão — Edição Limitada',  stagger: true,  featured: true,  wa: wa('Olá! Vi a Campanha de Verão do Rise Fit Club e gostava de saber mais!') },
+              { src: '/Packs/Pack Base.jpeg',                  alt: 'Pack Mensal Base — 35€/mês',           stagger: false, featured: false, wa: wa('Olá! Tenho interesse no Pack Base (35€/mês) do Rise Fit Club. Podem dar-me mais informações?') },
+              { src: '/Packs/Pack Hora de Almoço.png',        alt: 'Pack Hora de Almoço — 27€/mês',        stagger: true,  featured: false, wa: wa('Olá! Tenho interesse no Pack Hora de Almoço (27€/mês) do Rise Fit Club. Podem dar-me mais informações?') },
+              { src: '/Packs/Pack Treino Personalizado.jpeg',  alt: 'Treino Personalizado — desde 40€/mês', stagger: false, featured: false, wa: wa('Olá! Tenho interesse no Pack de Treino Personalizado do Rise Fit Club. Podem dar-me mais informações?') },
+              { src: '/Packs/Pack Campanha Verão.jpeg',        alt: 'Campanha de Verão — Edição Limitada',  stagger: true,  featured: true,  wa: wa('Olá! Vi a Campanha de Verão do Rise Fit Club e gostava de saber mais!') },
             ] as const).map((pack, i) => (
               <a
                 key={i}
