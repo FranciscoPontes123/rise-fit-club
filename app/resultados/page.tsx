@@ -31,6 +31,7 @@ const IMAGES = [
   { label: 'Bruno',    src: '/Transformações/Transformação 17.png' },
   { label: 'Mónica',   src: '/Transformações/Transformação 18.png' },
   { label: 'Gonçalo',  src: '/Transformações/Transformação 19.png' },
+  { label: 'João',     src: '/Transformações/Transformação 20.png' },
 ];
 
 export default function ResultadosPage() {
