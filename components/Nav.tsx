@@ -65,7 +65,7 @@ export default function Nav() {
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 74 }}>
         {/* Logo */}
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <Image src="/Logo Transparente.png" alt="Rise Fit Club" width={36} height={36} style={{ objectFit: 'contain' }} />
+          <Image src="/Logos/Logo Transparente.png" alt="Rise Fit Club" width={36} height={36} style={{ objectFit: 'contain' }} />
           <span
             style={{
               fontFamily: 'var(--head-font)',

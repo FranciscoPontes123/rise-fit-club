@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function RiseLogo({ size = 44, square }: { size?: number; square?: boolean }) {
   return (
     <Image
-      src="/rise-logo.jpg"
+      src="/Logos/rise-logo.jpg"
       alt="Rise Fit Club"
       width={size}
       height={size}

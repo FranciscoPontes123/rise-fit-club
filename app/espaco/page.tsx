@@ -63,7 +63,7 @@ export default function EspacoPage() {
             <div className="page-hero-logo" aria-hidden>
               <Magnet strength={0.18}>
                 <Image
-                  src="/Logo Transparente.png"
+                  src="/Logos/Logo Transparente.png"
                   alt=""
                   width={400}
                   height={400}
