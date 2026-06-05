@@ -5,11 +5,11 @@ export const FAQS = [
   },
   {
     q: 'Como me posso inscrever?',
-    a: 'Entra em contacto connosco, ou escreve no nosso formulário as tuas informações, e a nossa equipa vai falar contigo. No Rise Fit Club, marcamos uma avaliação inicial gratuita para todos os membros, para entender as necessidades de cada um e fornecer um serviço à medida.',
+    a: 'Entra em contacto connosco pelo WhatsApp ou por qualquer uma das vias disponíveis na página de contacto. No Rise Fit Club, marcamos uma avaliação inicial gratuita para todos os membros, para entender as necessidades de cada um e fornecer um serviço à medida.',
   },
   {
     q: 'Qual é a política de cancelamento?',
-    a: 'Sem fidelização anual. Pedimos que o pedido de cancelamento seja efetuado até ao dia 15 de cada mês, por questões de contabilidade.',
+    a: 'Sem fidelização. Pedimos que o pedido de cancelamento seja efetuado até ao dia 15 de cada mês, por questões de contabilidade.',
   },
   {
     q: 'Há estacionamento?',

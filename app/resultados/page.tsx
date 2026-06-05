@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { IconArrow, IconIG } from '@/components/icons';
-import ReviewForm from '@/components/ReviewForm';
+import CallmebotForm from '@/components/CallmebotForm';
 import { REVIEWS } from '@/data/reviews';
+import Magnet from '@/components/ui/Magnet';
 
 export const metadata: Metadata = {
   title: 'Resultados — Rise Fit Club',
@@ -25,10 +26,26 @@ export default function ResultadosPage() {
       {/* Hero */}
       <section className="page" style={{ paddingTop: 160 }}>
         <div className="container">
-          <div className="eyebrow" style={{ marginBottom: 20 }}>— 04 / Resultados & Feedback</div>
-          <h1 style={{ fontSize: 'clamp(56px,9vw,140px)', maxWidth: '14ch' }}>
-            Resultados dos nossos <span className="gold">membros</span>.
-          </h1>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
+            <div>
+              <div className="eyebrow" style={{ marginBottom: 20 }}>— 04 / Resultados & Feedback</div>
+              <h1 style={{ fontSize: 'clamp(56px,9vw,140px)', maxWidth: '14ch' }}>
+                Resultados dos nossos <span className="gold">membros</span>.
+              </h1>
+            </div>
+            <div className="page-hero-logo" aria-hidden>
+              <Magnet strength={0.18}>
+                <Image
+                  src="/Logo Transparente.png"
+                  alt=""
+                  width={400}
+                  height={400}
+                  className="logo-anim"
+                  style={{ objectFit: 'contain', width: 'clamp(220px,24vw,400px)', height: 'auto' }}
+                />
+              </Magnet>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -177,7 +194,7 @@ export default function ResultadosPage() {
                   <span className="gold">Deixa a tua review.</span>
                 </h2>
               </div>
-              <ReviewForm />
+              <CallmebotForm />
             </div>
 
             <div

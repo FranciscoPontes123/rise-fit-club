@@ -1,20 +1,14 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Photo from '@/components/ui/Photo';
 import SectionHead from '@/components/ui/SectionHead';
 import LocationStrip from '@/components/sections/LocationStrip';
+import Magnet from '@/components/ui/Magnet';
 import { IconCheck } from '@/components/icons';
 
 export const metadata: Metadata = {
   title: 'Espaço & Equipamento — Rise Fit Club',
   description: '500m² divididos por função. Equipamento profissional, tatami BJJ, estúdio Pilates e muito mais em Almargem do Bispo.',
 };
-
-const GALLERY = [
-  { label: 'SALA SECUNDÁRIA', colSpan: 2, h: 500, src: '/sala-secundaria.jpeg', sizes: '(max-width:760px) 100vw, 66vw' },
-  { label: 'SALA PRINCIPAL', colSpan: 1, h: 500, src: '/sala-principal.jpeg', sizes: '(max-width:760px) 100vw, 33vw' },
-  { label: 'ESTÚDIO · AULAS DE GRUPO', colSpan: 3, h: 380 },
-];
 
 const HIGHLIGHTS = [
   {
@@ -27,7 +21,7 @@ const HIGHLIGHTS = [
   },
   {
     title: 'Aulas de Grupo',
-    items: ['Pilates', 'GAP', 'Circuito', 'HIIT', 'Localizada', 'Fit Boxe', 'Yoga'],
+    items: ['Pilates', 'GAP', 'Circuito', 'HIIT', 'Localizada', 'Fit Boxe', 'Yoga', 'Jiu-Jitsu', 'Preparação de Atletas', 'Defesa Pessoal'],
   },
 ];
 
@@ -37,48 +31,58 @@ export default function EspacoPage() {
       {/* Hero */}
       <section className="page" style={{ paddingTop: 160 }}>
         <div className="container">
-          <div className="eyebrow" style={{ marginBottom: 20 }}>— 02 / Espaço & Equipamento</div>
-          <h1 style={{ fontSize: 'clamp(56px,9vw,140px)', maxWidth: '14ch' }}>
-            O sítio onde o trabalho <span className="gold">acontece</span>.
-          </h1>
-          <p className="muted" style={{ fontSize: 18, maxWidth: 640, marginTop: 24, lineHeight: 1.6 }}>
-            2 espaços especializados para treino individual ou em grupo. Equipamento de topo, escolhido à medida para ti.
-          </p>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
+            <div>
+              <div className="eyebrow" style={{ marginBottom: 20 }}>— 02 / Espaço & Equipamento</div>
+              <h1 style={{ fontSize: 'clamp(56px,9vw,140px)', maxWidth: '14ch' }}>
+                O sítio onde o trabalho <span className="gold">acontece</span>.
+              </h1>
+              <p className="muted" style={{ fontSize: 18, maxWidth: 640, marginTop: 24, lineHeight: 1.6 }}>
+                2 espaços especializados para treino individual ou em grupo. Equipamento de topo, escolhido à medida para ti.
+              </p>
+            </div>
+            <div className="page-hero-logo" aria-hidden>
+              <Magnet strength={0.18}>
+                <Image
+                  src="/Logo Transparente.png"
+                  alt=""
+                  width={400}
+                  height={400}
+                  className="logo-anim"
+                  style={{ objectFit: 'contain', width: 'clamp(220px,24vw,400px)', height: 'auto' }}
+                />
+              </Magnet>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Gallery */}
+      {/* Videos */}
       <section style={{ padding: '40px 0 80px' }}>
         <div className="container">
-          <div
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 16 }}
-            className="gallery-grid"
-          >
-            {GALLERY.map((g, i) => (
-              <div
-                key={i}
-                style={{ gridColumn: `span ${g.colSpan}`, position: 'relative', minHeight: g.h }}
-              >
-                {g.src ? (
-                  <Image
-                    src={g.src}
-                    alt={g.label}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    sizes={g.sizes ?? '(max-width:980px) 50vw, 25vw'}
-                    quality={90}
-                  />
-                ) : (
-                  <Photo h={g.h} label={g.label} />
-                )}
-              </div>
-            ))}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="video-grid">
+            <video
+              src="/Sala Principal.mov"
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{ width: '100%', height: 500, objectFit: 'cover', display: 'block' }}
+            />
+            <video
+              src="/Sala Secundária.MOV"
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{ width: '100%', height: 500, objectFit: 'cover', display: 'block' }}
+            />
           </div>
         </div>
         <style>{`
           @media (max-width: 760px) {
-            .gallery-grid { grid-template-columns: 1fr !important; }
-            .gallery-grid > div { grid-column: span 1 !important; }
+            .video-grid { grid-template-columns: 1fr !important; }
+            .video-grid video { height: 320px !important; }
           }
         `}</style>
       </section>

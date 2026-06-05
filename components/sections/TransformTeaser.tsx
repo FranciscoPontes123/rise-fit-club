@@ -13,7 +13,7 @@ const IMAGES = [
 
 export default function TransformTeaser() {
   return (
-    <section className="page" style={{ background: '#080808', overflow: 'hidden' }}>
+    <section className="page" style={{ overflow: 'hidden' }}>
       <div className="container" style={{ marginBottom: 40 }}>
         <div
           style={{

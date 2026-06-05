@@ -53,8 +53,8 @@ export function IconStar({ filled = true, size = 18 }: { filled?: boolean; size?
       width={size}
       height={size}
       viewBox="0 0 24 24"
-      fill={filled ? '#C9A84C' : 'none'}
-      stroke="#C9A84C"
+      fill={filled ? '#fbcc1f' : 'none'}
+      stroke="#fbcc1f"
       strokeWidth="1.5"
     >
       <polygon points="12,3 14.6,9 21,9.6 16,14 17.4,20.4 12,17.2 6.6,20.4 8,14 3,9.6 9.4,9" />
@@ -138,7 +138,7 @@ export function IconCheck() {
       height="18"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="#C9A84C"
+      stroke="#fbcc1f"
       strokeWidth="2.4"
       strokeLinecap="round"
       strokeLinejoin="round"

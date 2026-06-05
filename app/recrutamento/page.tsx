@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { IconArrow } from '@/components/icons';
+import Magnet from '@/components/ui/Magnet';
 
 export const metadata: Metadata = {
   title: 'Recrutamento & Parcerias — Rise Fit Club',
@@ -27,18 +29,34 @@ export default function RecrutamentoPage() {
       {/* Hero */}
       <section className="page" style={{ paddingTop: 160, paddingBottom: 60 }}>
         <div className="container">
-          <div className="eyebrow" style={{ marginBottom: 20 }}>— Recrutamento & Parcerias</div>
-          <h1 style={{ fontSize: 'clamp(56px,9vw,130px)', lineHeight: 0.88, maxWidth: '16ch' }}>
-            Cresce com o <span className="gold">Rise</span>.
-          </h1>
-          <p className="muted" style={{ fontSize: 18, maxWidth: 600, marginTop: 28, lineHeight: 1.6 }}>
-            Duas formas de fazer parte do Rise Fit Club: integrares a nossa equipa interna, ou estabeleceres um modelo de renda/utilização das nossas instalações.
-          </p>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
+            <div>
+              <div className="eyebrow" style={{ marginBottom: 20 }}>— Recrutamento & Parcerias</div>
+              <h1 style={{ fontSize: 'clamp(56px,9vw,130px)', lineHeight: 0.88, maxWidth: '16ch' }}>
+                Cresce com o <span className="gold">Rise</span>.
+              </h1>
+              <p className="muted" style={{ fontSize: 18, maxWidth: 600, marginTop: 28, lineHeight: 1.6 }}>
+                Duas formas de fazer parte do Rise Fit Club: integrares a nossa equipa interna, ou estabeleceres um modelo de renda/utilização das nossas instalações.
+              </p>
+            </div>
+            <div className="page-hero-logo" aria-hidden>
+              <Magnet strength={0.18}>
+                <Image
+                  src="/Logo Transparente.png"
+                  alt=""
+                  width={400}
+                  height={400}
+                  className="logo-anim"
+                  style={{ objectFit: 'contain', width: 'clamp(220px,24vw,400px)', height: 'auto' }}
+                />
+              </Magnet>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Two modalities */}
-      <section style={{ background: '#0a0a0a', borderTop: '1px solid var(--line)', paddingBottom: 100, paddingTop: 60 }}>
+      <section style={{ borderTop: '1px solid var(--line)', paddingBottom: 100, paddingTop: 60 }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }} className="recruit-modes">
 
@@ -102,7 +120,7 @@ export default function RecrutamentoPage() {
               <div style={{ padding: '16px 20px', background: '#111', border: '1px solid var(--line)' }}>
                 <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase', color: '#555', marginBottom: 8 }}>Opções disponíveis</div>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
-                  {['Renda por horas — flexível', 'Renda mensal — valor fixo', 'Acesso às salas especializadas', 'Condições negociáveis'].map((item, i) => (
+                  {['Renda por horas — flexível', 'Renda mensal — valor mediante número de horas', 'Acesso às salas especializadas'].map((item, i) => (
                     <li key={i} style={{ display: 'flex', gap: 10, fontSize: 13, color: '#999', fontFamily: 'var(--mono)' }}>
                       <span style={{ color: '#555' }}>—</span> {item}
                     </li>
@@ -126,7 +144,7 @@ export default function RecrutamentoPage() {
       </section>
 
       {/* Internal roles */}
-      <section className="page" style={{ background: '#0e0c09', borderTop: '1px solid var(--line)' }}>
+      <section className="page" style={{ borderTop: '1px solid var(--line)' }}>
         <div className="container">
           <div className="eyebrow" style={{ marginBottom: 16 }}>— Recrutamento Interno</div>
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 24, marginBottom: 48 }}>
@@ -183,7 +201,7 @@ export default function RecrutamentoPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section style={{ background: '#0d0d0d', borderTop: '2px solid var(--gold)', padding: '80px 0' }}>
+      <section style={{ borderTop: '2px solid var(--gold)', padding: '80px 0' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <h2 style={{ fontSize: 'clamp(36px,5vw,72px)', marginBottom: 16 }}>
             Tens dúvidas? <span className="gold">Fala connosco.</span>

@@ -96,12 +96,11 @@ export default function ServicesStrip() {
                   className="svc-sub"
                   style={{
                     fontFamily: 'var(--mono)',
-                    fontSize: 14,
-                    letterSpacing: '.16em',
+                    fontSize: 15,
+                    letterSpacing: '.14em',
                     textTransform: 'uppercase',
-                    color: '#666',
+                    color: '#ffffff',
                     textAlign: 'right',
-                    transition: 'color .2s',
                     whiteSpace: 'nowrap',
                     paddingLeft: 16,
                   }}
@@ -130,7 +129,7 @@ export default function ServicesStrip() {
         .svc-row:hover .svc-accent { transform: scaleY(1); }
         .svc-row:hover .svc-index { color: var(--gold) !important; }
         .svc-row:hover .svc-name { color: #fff !important; }
-        .svc-row:hover .svc-sub { color: #999 !important; }
+        .svc-row:hover .svc-sub { color: #fff !important; }
         .svc-row:hover .svc-icon { opacity: 0.8 !important; }
         @media (max-width: 760px) {
           .svc-row { grid-template-columns: 40px 1fr !important; }

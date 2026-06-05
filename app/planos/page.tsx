@@ -3,11 +3,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { IconArrow, IconPerson, IconGroup, IconCheck } from '@/components/icons';
 import Magnet from '@/components/ui/Magnet';
+import PlanosPopup from '@/components/PlanosPopup';
 
 export const metadata: Metadata = {
   title: 'Planos — Rise Fit Club',
   description: 'Planos de acesso ao Rise Fit Club a partir de 27€/mês. Sem contratos, sem letras pequenas.',
 };
+
+const WA = 'https://wa.me/351963329814';
+const wa = (msg: string) => `${WA}?text=${encodeURIComponent(msg)}`;
 
 const EXTRA_SERVICES = [
   {
@@ -16,6 +20,7 @@ const EXTRA_SERVICES = [
     sub: 'PT 1-on-1',
     desc: 'Programa completamente personalizado com um coach dedicado. Progressão semanal, ajuste de carga e acompanhamento contínuo.',
     perk: 'Inclui Aconselhamento Nutricional',
+    wa: wa('Olá! Tenho interesse no Treino Individual (PT 1-on-1) no Rise Fit Club. Podem dar-me mais informações?'),
   },
   {
     icon: <IconGroup />,
@@ -23,6 +28,7 @@ const EXTRA_SERVICES = [
     sub: '2 pessoas · 1 coach',
     desc: 'Treina em par com um amigo ou parceiro. A mesma qualidade do PT individual, a um custo mais acessível para dois.',
     perk: 'Inclui Aconselhamento Nutricional',
+    wa: wa('Olá! Tenho interesse no Treino Duo no Rise Fit Club. Podem dar-me mais informações?'),
   },
   {
     icon: (
@@ -36,40 +42,59 @@ const EXTRA_SERVICES = [
     sub: 'Remoto · Flexível',
     desc: 'Coaching à distância com programa personalizado, check-ins semanais e ajustes em tempo real.',
     perk: 'Inclui Aconselhamento Nutricional',
+    wa: wa('Olá! Tenho interesse no Acompanhamento Online do Rise Fit Club. Podem dar-me mais informações?'),
   },
   {
     icon: <IconGroup />,
     name: 'Small Group Training',
     sub: 'Grupos reduzidos · Custo partilhado',
     desc: 'Treino em grupo pequeno com atenção individualizada. A intensidade do PT, com o custo dividido por todos.',
+    wa: wa('Olá! Tenho interesse em Small Group Training no Rise Fit Club. Podem dar-me mais informações?'),
   },
   {
     icon: <IconPerson />,
     name: 'Acompanhamento em Sala',
     sub: 'Rota personalizada · Em piso',
     desc: 'O coach acompanha-te durante o teu treino livre, corrige a técnica, ajusta cargas e guia cada exercício no momento.',
+    wa: wa('Olá! Tenho interesse no Acompanhamento em Sala no Rise Fit Club. Podem dar-me mais informações?'),
   },
 ];
 
 export default function PlanosPage() {
   return (
     <div className="page-enter">
+      <PlanosPopup />
       {/* Hero */}
       <section className="page" style={{ paddingTop: 160, paddingBottom: 60 }}>
         <div className="container">
-          <div className="eyebrow" style={{ marginBottom: 20 }}>— 05 / Planos</div>
-          <h1 style={{ fontSize: 'clamp(56px,9vw,140px)', maxWidth: '14ch' }}>
-            Escolhe o teu <span className="gold">acesso</span>.
-          </h1>
-          <p className="muted" style={{ fontSize: 18, maxWidth: 640, marginTop: 24, lineHeight: 1.6 }}>
-            Sem contratos abusivos. Sem letras pequenas. Cancela a qualquer
-            momento. Tudo o que pagas, está visível em baixo.
-          </p>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
+            <div>
+              <div className="eyebrow" style={{ marginBottom: 20 }}>— 05 / Planos</div>
+              <h1 style={{ fontSize: 'clamp(56px,9vw,140px)', maxWidth: '14ch' }}>
+                Escolhe o teu <span className="gold">acesso</span>.
+              </h1>
+              <p className="muted" style={{ fontSize: 18, maxWidth: 640, marginTop: 24, lineHeight: 1.6 }}>
+                Sem fidelização. Treina sempre que fizer sentido para ti.
+              </p>
+            </div>
+            <div className="page-hero-logo" aria-hidden>
+              <Magnet strength={0.18}>
+                <Image
+                  src="/Logo Transparente.png"
+                  alt=""
+                  width={400}
+                  height={400}
+                  className="logo-anim"
+                  style={{ objectFit: 'contain', width: 'clamp(220px,24vw,400px)', height: 'auto' }}
+                />
+              </Magnet>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* 1 — Serviços de acompanhamento */}
-      <section className="page" style={{ background: '#0e0c09', borderTop: '1px solid var(--line)' }}>
+      <section className="page" style={{ borderTop: '1px solid var(--line)' }}>
         <div className="container">
           <div className="eyebrow" style={{ marginBottom: 14 }}>— Treino Personalizado</div>
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 24, marginBottom: 48 }}>
@@ -106,9 +131,15 @@ export default function PlanosPage() {
                     <IconCheck /> {s.perk}
                   </div>
                 )}
-                <Link href="/contacto" className="btn btn-outline-gold" style={{ marginTop: 'auto', justifyContent: 'center' }}>
+                <a
+                  href={s.wa}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline-gold"
+                  style={{ marginTop: 'auto', justifyContent: 'center' }}
+                >
                   Saber mais <IconArrow rot={-90} />
-                </Link>
+                </a>
               </div>
             ))}
           </div>
@@ -120,7 +151,7 @@ export default function PlanosPage() {
       </section>
 
       {/* 2 — Packs gallery */}
-      <section className="page" style={{ background: '#080806', borderTop: '1px solid var(--line)' }}>
+      <section className="page" style={{ borderTop: '1px solid var(--line)' }}>
         <div className="container">
           <div className="eyebrow" style={{ marginBottom: 14 }}>— Os nossos Packs</div>
           <div style={{
@@ -143,13 +174,16 @@ export default function PlanosPage() {
             alignItems: 'start',
           }}>
             {([
-              { src: '/Pack Hora de Almoço.jpeg',        alt: 'Pack Hora de Almoço — 27€/mês',           stagger: false, featured: false },
-              { src: '/Pack Base.jpeg',                  alt: 'Pack Mensal Base — 35€/mês',              stagger: true,  featured: false },
-              { src: '/Pack Treino Personalizado.jpeg',  alt: 'Treino Personalizado — desde 40€/mês',    stagger: false, featured: false },
-              { src: '/Pack Campanha Verão.jpeg',        alt: 'Campanha de Verão — Edição Limitada',     stagger: true,  featured: true  },
+              { src: '/Pack Base.jpeg',                  alt: 'Pack Mensal Base — 35€/mês',           stagger: false, featured: false, wa: wa('Olá! Tenho interesse no Pack Base (35€/mês) do Rise Fit Club. Podem dar-me mais informações?') },
+              { src: '/Pack Hora de Almoço.jpeg',        alt: 'Pack Hora de Almoço — 27€/mês',        stagger: true,  featured: false, wa: wa('Olá! Tenho interesse no Pack Hora de Almoço (27€/mês) do Rise Fit Club. Podem dar-me mais informações?') },
+              { src: '/Pack Treino Personalizado.jpeg',  alt: 'Treino Personalizado — desde 40€/mês', stagger: false, featured: false, wa: wa('Olá! Tenho interesse no Pack de Treino Personalizado do Rise Fit Club. Podem dar-me mais informações?') },
+              { src: '/Pack Campanha Verão.jpeg',        alt: 'Campanha de Verão — Edição Limitada',  stagger: true,  featured: true,  wa: wa('Olá! Vi a Campanha de Verão do Rise Fit Club e gostava de saber mais!') },
             ] as const).map((pack, i) => (
-              <div
+              <a
                 key={i}
+                href={pack.wa}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="pack-card"
                 style={{
                   position: 'relative',
@@ -157,6 +191,8 @@ export default function PlanosPage() {
                   border: pack.featured ? '2px solid var(--gold)' : '1px solid rgba(255,255,255,0.08)',
                   marginTop: pack.stagger ? 40 : 0,
                   background: '#0d0d0d',
+                  display: 'block',
+                  textDecoration: 'none',
                 }}
               >
                 {pack.featured && (
@@ -176,15 +212,21 @@ export default function PlanosPage() {
                     style={{ width: '100%', height: 'auto', display: 'block' }}
                   />
                 </div>
-              </div>
+              </a>
             ))}
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: 64 }}>
             <Magnet>
-              <Link href="/contacto" className="btn btn-gold" style={{ fontSize: 16, padding: '16px 44px' }}>
+              <a
+                href={wa('Olá! Gostava de saber mais sobre os planos do Rise Fit Club.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-gold"
+                style={{ fontSize: 16, padding: '16px 44px' }}
+              >
                 Falar com a equipa <IconArrow rot={-90} />
-              </Link>
+              </a>
             </Magnet>
           </div>
         </div>

@@ -17,14 +17,14 @@ export const SERVICES = [
     id: 'pt',
     icon: 'person',
     name: 'Treino Personalizado',
-    sub: '1-on-1',
+    sub: '1-on-1 · Duo · Trio · Small Group',
     desc: 'Programa feito à medida. Acompanhamento, ajuste e progressão semanal com coach dedicado.',
   },
   {
     id: 'smallgroup',
     icon: 'group',
     name: 'Small Group Training',
-    sub: 'Grupos reduzidos',
+    sub: 'Aulas de grupos reduzidos',
     desc: 'A energia de grupo com atenção de PT. Treino em grupos pequenos com acompanhamento individualizado.',
   },
   {

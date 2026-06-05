@@ -247,7 +247,7 @@ export default function Hero() {
           animation:
             logo-enter 1.1s cubic-bezier(.16,1,.3,1) 0.35s both,
             logo-float 5s ease-in-out 1.5s infinite;
-          filter: drop-shadow(0 0 40px rgba(201,168,76,.18));
+          filter: drop-shadow(0 0 40px rgba(251,204,31,.18));
         }
         @media (max-width: 640px) {
           .hero-bottom { grid-template-columns: 1fr !important; }

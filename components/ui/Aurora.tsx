@@ -1,7 +1,7 @@
 'use client';
 
 export default function Aurora({
-  colorStops = ['rgba(201,168,76,0.18)', 'rgba(232,0,13,0.12)', 'rgba(201,168,76,0.08)'],
+  colorStops = ['rgba(251,204,31,0.18)', 'rgba(232,0,13,0.12)', 'rgba(251,204,31,0.08)'],
   style = {},
 }: {
   colorStops?: string[];

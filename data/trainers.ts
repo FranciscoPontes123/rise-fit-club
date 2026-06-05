@@ -16,7 +16,7 @@ export const TRAINERS = [
   },
   {
     name: 'Rúben C.',
-    role: 'Personal Trainer · Ginástica Sénior · Hipertrofia',
+    role: 'Personal Trainer · Ginástica Sénior · Hipertrofia · Perda de Peso',
     photo: '/Rúben C.jpg',
   },
   {

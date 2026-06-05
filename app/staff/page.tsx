@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { TRAINERS } from '@/data/trainers';
 import { IconArrow } from '@/components/icons';
+import Magnet from '@/components/ui/Magnet';
 
 export const metadata: Metadata = {
   title: 'Staff — Rise Fit Club',
@@ -15,13 +16,29 @@ export default function StaffPage() {
       {/* Hero */}
       <section className="page" style={{ paddingTop: 160 }}>
         <div className="container">
-          <div className="eyebrow" style={{ marginBottom: 20 }}>— Staff</div>
-          <h1 style={{ fontSize: 'clamp(56px,9vw,140px)', maxWidth: '14ch' }}>
-            A tua <span className="gold">Rise Team</span>.
-          </h1>
-          <p className="muted" style={{ fontSize: 18, maxWidth: 640, marginTop: 24, lineHeight: 1.6 }}>
-            Equipa dedicada a ti, com especialistas em força, mobilidade, pilates clínico e perda de peso.
-          </p>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
+            <div>
+              <div className="eyebrow" style={{ marginBottom: 20 }}>— Staff</div>
+              <h1 style={{ fontSize: 'clamp(56px,9vw,140px)', maxWidth: '14ch' }}>
+                A tua <span className="gold">Rise Team</span>.
+              </h1>
+              <p className="muted" style={{ fontSize: 18, maxWidth: 640, marginTop: 24, lineHeight: 1.6 }}>
+                Equipa dedicada a ti, com especialistas em força, mobilidade, pilates clínico e perda de peso.
+              </p>
+            </div>
+            <div className="page-hero-logo" aria-hidden>
+              <Magnet strength={0.18}>
+                <Image
+                  src="/Logo Transparente.png"
+                  alt=""
+                  width={400}
+                  height={400}
+                  className="logo-anim"
+                  style={{ objectFit: 'contain', width: 'clamp(220px,24vw,400px)', height: 'auto' }}
+                />
+              </Magnet>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -88,11 +105,11 @@ export default function StaffPage() {
       </section>
 
       {/* Recrutamento CTA */}
-      <section style={{ background: '#0d0d0d', borderTop: '2px solid var(--gold)', padding: '80px 0' }}>
+      <section style={{ borderTop: '2px solid var(--gold)', padding: '80px 0' }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 32 }}>
           <div>
             <h2 style={{ fontSize: 'clamp(36px,5vw,72px)', lineHeight: 0.9 }}>
-              Queres juntar-te à<br /><span className="gold">Rise Team</span>?
+              Gostavas de trabalhar<br />no <span className="gold">Rise Fit Club</span>?
             </h2>
             <p className="muted" style={{ marginTop: 16, fontSize: 16, maxWidth: 400, lineHeight: 1.6 }}>
               Estamos sempre abertos a novos talentos. Candidata-te ou propõe um modelo de parceria.
