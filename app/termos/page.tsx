@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Termos e condições de utilização dos serviços do Rise Fit Club.',
 };
 
-const LAST_UPDATED = '29 de maio de 2026';
+const LAST_UPDATED = '6 de junho de 2026';
 
 export default function TermosPage() {
   return (
@@ -52,7 +52,7 @@ export default function TermosPage() {
             </Block>
 
             <Block title="5. Cancelamento">
-              <p>Não existe fidelização anual. O membro pode cancelar a sua subscrição a qualquer momento, desde que o pedido seja submetido <strong>até ao dia 15 do mês anterior</strong> ao pretendido para cessação.</p>
+              <p>Não existe fidelização. O membro pode cancelar a sua subscrição a qualquer momento, desde que o pedido seja submetido <strong>até ao dia 15 do mês anterior</strong> ao pretendido para cessação.</p>
               <p>O cancelamento deve ser comunicado por escrito através do email <a href="mailto:risefitclub.almargem@gmail.com" className="gold">risefitclub.almargem@gmail.com</a> ou via WhatsApp.</p>
             </Block>
 
