@@ -10,20 +10,20 @@ const wa = (msg: string) =>
 
 const SLIDES = [
   {
-    img:     '/Packs/Pack Campanha Verão.jpeg',
-    eyebrow: '— Campanha de Verão',
-    title:   <>Oferta <span className="gold">especial</span><br />por tempo limitado.</>,
-    body:    'A nossa campanha de Verão está disponível por tempo limitado. Aproveita antes que acabe — as vagas são limitadas.',
-    cta:     'Quero saber mais',
-    wa:      wa('Olá! Vi a Campanha de Verão do Rise Fit Club e gostava de saber mais!'),
-  },
-  {
     img:     '/Packs/Pack Base.jpeg',
     eyebrow: '— Pack Base',
     title:   <>Treina por <span className="gold">35€/mês</span>.<br />Sem fidelização.</>,
     body:    'Acesso total ao ginásio, sem contratos e sem letras pequenas. O plano mais direto para quem quer começar.',
     cta:     'Quero este pack',
     wa:      wa('Olá! Tenho interesse no Pack Base (35€/mês) do Rise Fit Club. Podem dar-me mais informações?'),
+  },
+  {
+    img:     '/Packs/Pack Campanha Verão.jpeg',
+    eyebrow: '— Campanha de Verão',
+    title:   <>Oferta <span className="gold">especial</span><br />por tempo limitado.</>,
+    body:    'A nossa campanha de Verão está disponível por tempo limitado. Aproveita antes que acabe — as vagas são limitadas.',
+    cta:     'Quero saber mais',
+    wa:      wa('Olá! Vi a Campanha de Verão do Rise Fit Club e gostava de saber mais!'),
   },
 ];
 
