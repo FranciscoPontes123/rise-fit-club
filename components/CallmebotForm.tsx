@@ -102,6 +102,12 @@ export default function CallmebotForm() {
         {state === 'sending' ? 'A enviar…' : <>Enviar review <IconArrow rot={-90} /></>}
       </button>
 
+      <p style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '.12em', color: '#555', lineHeight: 1.6 }}>
+        Ao enviar, aceitas a nossa{' '}
+        <a href="/privacidade" style={{ color: 'var(--gold)', textDecoration: 'underline' }}>Política de Privacidade</a>.
+        O teu nome e review serão recebidos internamente pela equipa do Rise Fit Club.
+      </p>
+
       <style>{`
         .cbf-field { display: flex; flex-direction: column; gap: 8px; }
         .cbf-field label { font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
