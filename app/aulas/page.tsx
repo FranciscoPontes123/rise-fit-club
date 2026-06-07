@@ -113,6 +113,7 @@ export default function AulasPage() {
       {/* Schedule grid */}
       <section style={{ borderTop: '1px solid var(--line)', paddingBottom: 100 }}>
         <div className="container" style={{ paddingTop: 60 }}>
+          <div className="sched-scroll">
           <div
             className="sched-grid"
             style={{
@@ -190,6 +191,7 @@ export default function AulasPage() {
               })
             )}
           </div>
+          </div>{/* sched-scroll */}
 
           <div style={{
             marginTop: 24,
@@ -217,10 +219,16 @@ export default function AulasPage() {
               box-shadow: inset 0 0 0 1px rgba(251,204,31,0.08), 0 0 16px rgba(251,204,31,0.06);
             }
             @media (max-width: 760px) {
-              .sched-grid { grid-template-columns: repeat(3, 1fr) !important; }
-            }
-            @media (max-width: 480px) {
-              .sched-grid { grid-template-columns: repeat(2, 1fr) !important; }
+              .sched-scroll {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: 0 -20px;
+                padding: 0 20px;
+              }
+              .sched-grid {
+                grid-template-columns: repeat(5, minmax(130px, 1fr)) !important;
+                min-width: 650px;
+              }
             }
           `}</style>
         </div>
