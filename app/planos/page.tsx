@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import Image from 'next/image';
 import { IconArrow, IconPerson, IconGroup, IconCheck } from '@/components/icons';
 import Magnet from '@/components/ui/Magnet';
@@ -169,7 +168,7 @@ export default function PlanosPage() {
 
           <div className="packs-grid" style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
+            gridTemplateColumns: 'repeat(3, 1fr)',
             gap: 20,
             alignItems: 'start',
           }}>
@@ -177,7 +176,6 @@ export default function PlanosPage() {
               { src: '/Packs/Pack Base.jpeg',                  alt: 'Pack Mensal Base — 35€/mês',           stagger: false, featured: false, wa: wa('Olá! Tenho interesse no Pack Base (35€/mês) do Rise Fit Club. Podem dar-me mais informações?') },
               { src: '/Packs/Pack Hora de Almoço.png',        alt: 'Pack Hora de Almoço — 27€/mês',        stagger: true,  featured: false, wa: wa('Olá! Tenho interesse no Pack Hora de Almoço (27€/mês) do Rise Fit Club. Podem dar-me mais informações?') },
               { src: '/Packs/Pack Treino Personalizado.jpeg',  alt: 'Treino Personalizado — desde 40€/mês', stagger: false, featured: false, wa: wa('Olá! Tenho interesse no Pack de Treino Personalizado do Rise Fit Club. Podem dar-me mais informações?') },
-              { src: '/Packs/Pack Campanha Verão.jpeg',        alt: 'Campanha de Verão — Edição Limitada',  stagger: true,  featured: true,  wa: wa('Olá! Vi a Campanha de Verão do Rise Fit Club e gostava de saber mais!') },
             ] as const).map((pack, i) => (
               <a
                 key={i}
@@ -188,21 +186,13 @@ export default function PlanosPage() {
                 style={{
                   position: 'relative',
                   overflow: 'hidden',
-                  border: pack.featured ? '2px solid var(--gold)' : '1px solid rgba(255,255,255,0.08)',
+                  border: '1px solid rgba(255,255,255,0.08)',
                   marginTop: pack.stagger ? 40 : 0,
                   background: '#0d0d0d',
                   display: 'block',
                   textDecoration: 'none',
                 }}
               >
-                {pack.featured && (
-                  <div style={{
-                    position: 'absolute', top: 14, left: 0, zIndex: 10,
-                    background: 'var(--gold)', color: '#0d0d0d',
-                    fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '.22em',
-                    textTransform: 'uppercase', padding: '5px 14px', fontWeight: 700,
-                  }}>★ Edição Limitada</div>
-                )}
                 <div className="pack-img-wrap" style={{ overflow: 'hidden' }}>
                   <Image
                     src={pack.src}

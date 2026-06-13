@@ -8,33 +8,22 @@ import { IconArrow } from '@/components/icons';
 const wa = (msg: string) =>
   `https://wa.me/351963329814?text=${encodeURIComponent(msg)}`;
 
-const SLIDES = [
-  {
-    img:     '/Packs/Pack Base.jpeg',
-    eyebrow: '— Pack Base',
-    title:   <>Treina por <span className="gold">35€/mês</span>.<br />Sem fidelização.</>,
-    body:    'Acesso total ao ginásio, sem contratos e sem letras pequenas. O plano mais direto para quem quer começar.',
-    cta:     'Quero este pack',
-    wa:      wa('Olá! Tenho interesse no Pack Base (35€/mês) do Rise Fit Club. Podem dar-me mais informações?'),
-  },
-  {
-    img:     '/Packs/Pack Campanha Verão.jpeg',
-    eyebrow: '— Campanha de Verão',
-    title:   <>Oferta <span className="gold">especial</span><br />por tempo limitado.</>,
-    body:    'A nossa campanha de Verão está disponível por tempo limitado. Aproveita antes que acabe — as vagas são limitadas.',
-    cta:     'Quero saber mais',
-    wa:      wa('Olá! Vi a Campanha de Verão do Rise Fit Club e gostava de saber mais!'),
-  },
-];
+const SLIDE = {
+  img:     '/Packs/Pack Base.jpeg',
+  eyebrow: '— Pack Base',
+  title:   <>Treina por <span className="gold">35€/mês</span>.<br />Sem fidelização.</>,
+  body:    'Acesso total ao ginásio, sem contratos e sem letras pequenas. O plano mais direto para quem quer começar.',
+  cta:     'Quero este pack',
+  wa:      wa('Olá! Tenho interesse no Pack Base (35€/mês) do Rise Fit Club. Podem dar-me mais informações?'),
+};
 
 export default function PlanosPopup() {
   const [open, setOpen]       = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [slide, setSlide]     = useState(0);
 
   useEffect(() => {
     setMounted(true);
-    const t = setTimeout(() => setOpen(true), 400);
+    const t = setTimeout(() => setOpen(true), 9000);
     return () => clearTimeout(t);
   }, []);
 
@@ -43,16 +32,10 @@ export default function PlanosPopup() {
     return () => { document.body.style.overflow = ''; };
   }, [open]);
 
-  useEffect(() => {
-    if (!open) return;
-    const t = setInterval(() => setSlide(s => (s + 1) % SLIDES.length), 4000);
-    return () => clearInterval(t);
-  }, [open]);
-
   if (!mounted || !open) return null;
 
   const close = () => setOpen(false);
-  const s = SLIDES[slide];
+  const s = SLIDE;
 
   return createPortal(
     <div
@@ -104,7 +87,6 @@ export default function PlanosPopup() {
         {/* Image */}
         <div style={{ position: 'relative', minHeight: 420 }}>
           <Image
-            key={slide}
             src={s.img}
             alt={s.eyebrow}
             fill
@@ -131,26 +113,7 @@ export default function PlanosPopup() {
             {s.body}
           </p>
 
-          {/* Dots */}
-          <div style={{ display: 'flex', gap: 8 }}>
-            {SLIDES.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setSlide(i)}
-                aria-label={`Slide ${i + 1}`}
-                style={{
-                  width: i === slide ? 24 : 8, height: 8,
-                  borderRadius: 4,
-                  background: i === slide ? 'var(--gold)' : '#333',
-                  border: 'none', cursor: 'pointer',
-                  padding: 0,
-                  transition: 'width 0.3s ease, background 0.3s ease',
-                }}
-              />
-            ))}
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+<div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <a
               href={s.wa}
               target="_blank"
