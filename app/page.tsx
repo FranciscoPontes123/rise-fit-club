@@ -5,9 +5,6 @@ import SocialProof from '@/components/sections/SocialProof';
 import StaffTeaser from '@/components/sections/StaffTeaser';
 import TransformTeaser from '@/components/sections/TransformTeaser';
 import LocationStrip from '@/components/sections/LocationStrip';
-import JantarPopup from '@/components/JantarPopup';
-import JantarBanner from '@/components/sections/JantarBanner';
-
 export const metadata: Metadata = {
   title: 'Rise Fit Club — Underground Gym · Almargem do Bispo, Sintra',
   description:
@@ -17,9 +14,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="page-enter">
-      <JantarPopup />
       <Hero />
-      <JantarBanner />
       <ServicesStrip />
       <SocialProof />
       <StaffTeaser />
